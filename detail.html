@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ប្រាសាទអង្គរវត្ត</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;700&family=Moul&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Kantumruy Pro", sans-serif;
+        }
+        .khmer-heading {
+            font-family: "Moul", cursive;
+        }
+    </style>
+</head>
+
+<body class="bg-[#114365] text-white antialiased selection:text-white">
+    <header
+        class="relative h-[450px] sm:h-[550px] md:h-[650px] bg-cover bg-center flex items-center justify-center"
+        style="background-image: linear-gradient(to bottom, rgba(20,79,119,0.3), rgba(20,79,119,0.75)), url('./images/page2.png')"
+    >
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative max-w-4xl mx-auto px-2.5 sm:px-4 text-center">
+            <h1 class="khmer-heading text-white text-2xl sm:text-4xl md:text-5xl lg:text-5xl leading-normal md:leading-snug">
+                ការវិវត្តរបស់ ប្រាសាទអង្គរវត្ត
+            </h1>
+        </div>
+    </header>
+    
+    <nav class="fixed top-0 left-0 w-full bg-[#2D2722]/95 border-b border-amber-900/40 shadow-lg transition-all duration-300 z-50">
+        <div class="max-w-8xl mx-auto px-2.5 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 sm:h-20 items-center">
+
+                <a href="./index.html" class="transition-transform hover:scale-105 duration-200">
+                    <img
+                        src="./images/logo.png"
+                        alt="Logo"
+                        class="h-9 sm:h-11 w-auto"
+                    >
+                </a>
+
+                <button id="menu-btn" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-stone-800 focus:outline-none transition-colors" aria-label="Toggle Menu">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                    <a href="./index.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">ទំព័រដើម</a>
+                    <a href="./detail.html" class="text-[#B9701D] border-b-2 border-[#B9701D] px-1 py-2">ការវិវត្ត</a>
+                    <a href="./about.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">បុព្វបុរស</a>
+                    <a href="./map.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">ផែនទី</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[#2D2722]/95 border-t border-amber-900/20 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <div class="px-2.5 pt-3 pb-4 space-y-2">
+                <a href="./index.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg text-sm transition-colors">ទំព័រដើម</a>
+                <a href="./detail.html" class="block bg-amber-950/40 text-[#B9701D] font-medium px-4 py-3 rounded-lg text-sm">ការវិវត្ត</a>
+                <a href="./about.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg text-sm transition-colors">បុព្វបុរស</a>
+                <a href="./map.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg text-sm transition-colors">ផែនទី</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 py-12 md:py-24 space-y-24 md:space-y-40">
+        <section class="text-center space-y-6 max-w-4xl mx-auto">
+            <h2 class="khmer-heading text-2xl sm:text-3xl md:text-4xl text-[#B9701D]">
+                ប្រវត្តិនៃការវិវត្តរបស់ប្រាសាទអង្គរវត្ត
+            </h2>
+            <p class="text-xs sm:text-sm md:text-base text-gray-100 leading-relaxed md:leading-loose px-2">
+                ប្រាសាទអង្គរវត្ត មិនត្រឹមតែជាអច្ឆរិយវត្ថុស្ថាបត្យកម្មប៉ុណ្ណោះទេ ប៉ុន្តែវាក៏ជាសាក្សីរស់នៃការផ្លាស់ប្តូរប្រវត្តិសាស្ត្រ នយោបាយ និងសាសនារបស់កម្ពុជាអស់រយៈពេលជិតមួយសហវត្សរ៍មកហើយ។ ដើម្បីយល់ដឹងឱ្យកាន់តែស៊ីជម្រៅ យើងអាចបែងចែកដំណាក់កាលធំៗនៃការវិវត្តរបស់មហាកំពែងថ្មនេះជា ៣ សម័យកាលដូចខាងក្រោម៖
+            </p>
+        </section>
+
+        <!-- Section 1 -->
+        <div class="w-full relative mx-auto max-w-6xl">
+            <div class="flex justify-between items-start mb-8 border-b border-blue-900/30 pb-6">
+                <div>
+                    <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+                        សម័យមហានគរ (ដើមសតវត្សរ៍ទី១២)៖
+                    </h2>
+                    <h3 class="text-lg md:text-xl font-bold text-[#24211d] mt-2">
+                        យុគមាសនៃការកសាង និងព្រហ្មញ្ញសាសនា
+                    </h3>
+                </div>
+                <div class="bg-stone-900/80 text-[#B9701D] border border-amber-900/40 khmer-heading text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                    ១
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden shadow-lg aspect-[4/3] flex items-center justify-center">
+                        <img src="./images/a1.png" alt="Angkor Wat Sketch" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/a2.png" alt="Detail 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/a3.png" alt="Detail 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/a4.png" alt="Detail 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-5 text-xs sm:text-sm md:text-base text-gray-200 font-light leading-relaxed md:leading-loose">
+                    <p>ជាសម័យកាលចាប់ផ្តើម និងជាចំណុចកំពូលនៃសិល្បៈខ្មែរ ដែលអង្គរវត្តត្រូវបានកសាងឡើងដើម្បីជានិមិត្តរូបនៃស្ថានសួគ៌លើផែនដី។</p>
+                    <p><span class="text-[#24211d] font-semibold">កាលបរិច្ឆេទ និងអ្នកស្ថាបនា៖</span> ប្រាសាទនេះត្រូវបានកសាងឡើងនៅចន្លោះឆ្នាំ ១១១៣ ដល់ ១១៥០ ក្នុងរជ្ជកាលរបស់ ព្រះបាទសូរ្យវរ្ម័នទី២ ដែលជាមហាក្សត្រដ៏មានមហិទ្ធិឫទ្ធិមួយព្រះអង្គក្នុងអាណាចក្រខ្មែរ។</p>
+                    <p><span class="text-[#24211d] font-semibold">ជំនឿ និងការឧទ្ទិស៖</span> ខុសប្លែកពីប្រាសាទមុនៗដែលភាគច្រើនឧទ្ទិសថ្វាយព្រះសិវៈ (ឥសូរ) អង្គរវត្តត្រូវបានកសាងឡើងដើម្បីឧទ្ទិសថ្វាយ ព្រះវិស្ណុ (នារាយណ៍) ក្នុងព្រហ្មញ្ញសាសនា។ លើសពីនេះ វាក៏ត្រូវបានរៀបចំឡើងជា «ប្រាសាទភ្នំ» សម្រាប់ធ្វើជាព្រះសុសាន (ទីតម្កល់ព្រះអដ្ឋិ) របស់ព្រះបាទសូរ្យវរ្ម័នទី២ ពេលព្រះអង្គសោយទិវង្គតទៅ។</p>
+                    <p><span class="text-[#24211d] font-semibold">ឈ្មោះដើម៖</span> នៅក្នុងសម័យនោះ ប្រាសាទនេះមានឈ្មោះផ្លូវការថា "បរមវិស្ណុលោក" ដែលមានន័យថា ពិភពដ៏បរិសុទ្ធរបស់ព្រះវិស្ណុ ឬឋានៈដ៏ខ្ពង់ខ្ពស់ដែលព្រះរាជាទទួលបានក្រោយការសោយទិវង្គតទៅជួបព្រះវិស្ណុ។</p>
+                    <p><span class="text-[#24211d] font-semibold">អត្ថន័យស្ថាបត្យកម្ម៖</span> <span class="italic text-[#FFDEB8]">*ប្រាង្គទាំងប្រាំ*</span> តំណាងឱ្យកំពូលភ្នំព្រះសុមេរុ ដែលជាមជ្ឈមណ្ឌលនៃចក្រវាឡ និងជាទីគង់ប្រថាប់របស់ពួកទេវតា។</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2-->
+        <div class="w-full relative mx-auto max-w-6xl">
+            <div class="flex flex-row-reverse justify-between items-start mb-8 border-b border-blue-900/30 pb-6">
+                <div class="text-right">
+                    <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+                        សម័យកណ្ដាល (សតវត្សរ៍ទី១៦)៖
+                    </h2>
+                    <h3 class="text-lg md:text-xl font-bold text-[#24211d] mt-2">
+                        ការផ្លាស់ប្តូរសាសនា និងការលេចឡើងនៃឈ្មោះ «អង្គរវត្ត»
+                    </h3>
+                </div>
+                <div class="bg-stone-900/80 text-[#B9701D] border border-amber-900/40 khmer-heading text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                    ២
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-7 order-2 lg:order-1 space-y-5 text-xs sm:text-sm md:text-base text-gray-200 font-light leading-relaxed md:leading-loose">
+                    <p>ក្រោយការបោះបង់ចោលរាជធានីអង្គរទៅតំបន់ខាងត្បូង អង្គរវត្តមិនត្រូវបានទុកចោលឱ្យ​រុករានដោយព្រៃជ្រៅទាំងស្រុងនោះទេ ប៉ុន្តែបានក្លាយជាទីសក្ការៈដ៏សំខាន់សម្រាប់ការផ្លាស់ប្តូរជំនឿ។</p>
+                    <p><span class="text-[#24211d] font-semibold">ការផ្លាស់ប្តូរឥទ្ធិពលសាសនា៖</span> នៅសតវត្សរ៍ទី១៦ អាណាចក្រខ្មែរបានងាកមកគោរពបូជា ព្រះពុទ្ធសាសនាថេរវាទ យ៉ាងខ្ជាប់ខ្ជួន។ អាស្រ័យហេតុនេះ ប្រាសាទព្រហ្មញ្ញសាសនាមួយនេះ ត្រូវបានបំប្លែងទៅជាវត្តអារាមព្រះពុទ្ធសាសនា ដោយមានការដាក់បញ្ចូលព្រះពុទ្ធរូបនៅតាមថែវ និងប្រាង្គកណ្តាល។</p>
+                    <p><span class="text-[#24211d] font-semibold">ការជួសជុលក្នុងរជ្ជកាលព្រះបាទច័ន្ទរាជា (១៥៤៦-១៥៦៤)៖ </span> ព្រះអង្គបានយាងត្រឡប់មកតំបន់អង្គរវិញ ហើយបានបញ្ជាឱ្យមានការកាប់ឆ្ការព្រៃ ជួសជុលឡើងវិញ និងឆ្លាក់បង្ហើយផ្ទាំងចម្លាក់រឿងរ៉ាវនានានៅតាមថែវជ្រុងឦសាន (ខាងកើតឈៀងខាងជើង) ដែលពីមុននៅទទេស្អាត។</p>
+                    <p><span class="text-[#24211d] font-semibold">ប្រភពនៃឈ្មោះ «អង្គរវត្ត»៖</span> គឺនៅក្នុងសម័យកាលនេះឯងដែលពាក្យថា «អង្គរវត្ត» ចាប់ផ្តើមលេចឡើងក្នុងសិលាចារឹក និងការហៅតៗគ្នា។ ពាក្យ «អង្គរ» មកពីពាក្យសំស្ក្រឹត «នគរ» (ទីក្រុង) រីឯ «វត្ត» គឺទីអារាមព្រះពុទ្ធសាសនា។ ដូចនេះ អង្គរវត្ត មានន័យថា "ទីក្រុងដែលមានវត្តអារាម"។</p>
+                </div>
+
+                <div class="lg:col-span-5 order-1 lg:order-2 space-y-4">
+                    <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden shadow-lg aspect-[4/3] flex items-center justify-center">
+                        <img src="./images/b1.png" alt="Angkor Wat Historical Sketch" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/b2.png" alt="Detail 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/b3.png" alt="Detail 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/b4.png" alt="Detail 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="w-full relative mx-auto max-w-6xl">
+            <div class="flex justify-between items-start mb-8 border-b border-blue-900/30 pb-6">
+                <div>
+                    <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+                        សម័យបច្ចុប្បន្ន៖
+                    </h2>
+                    <h3 class="text-lg md:text-xl font-bold text-[#24211d] mt-2">
+                        បេតិកភណ្ឌពិភពលោក និងជានិមិត្តរូបនៃដួងព្រលឹងជាតិ
+                    </h3>
+                </div>
+                <div class="bg-stone-900/80 text-[#B9701D] border border-amber-900/40 khmer-heading text-xl w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
+                    ៣
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden shadow-lg aspect-[4/3] flex items-center justify-center">
+                        <img src="./images/c1.png" alt="Angkor Wat Present Day" class="w-full h-full object-cover">
+                    </div>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/c2.png" alt="Detail 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/c3.png" alt="Detail 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="bg-gray-800/40 border border-gray-700/30 overflow-hidden aspect-video">
+                            <img src="./images/c4.png" alt="Detail 3" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-5 text-xs sm:text-sm md:text-base text-gray-200 font-light leading-relaxed md:leading-loose">
+                    <p>នាពេលបច្ចុប្បន្ន អង្គរវត្តបានវិវត្តពីប្រាសាទបុរាណ មកជាបេះដូងសេដ្ឋកិច្ច វប្បធម៌ និងជាអត្តសញ្ញាណជាតិដែលមិនអាចខ្វះបាននៅលើឆាកអន្តរជាតិ។</p>
+                    <p><span class="text-[#24211d] font-semibold">មជ្ឈមណ្ឌលជំនឿរស់៖</span> មិនមែនជាតំបន់ប្រវត្តិសាស្ត្រដែលស្លាប់បាត់បង់ជីវិតនោះទេ អង្គរវត្តនៅតែបន្តតួនាទីជាទីសក្ការៈបូជាព្រះពុទ្ធសាសនាដ៏មានឥទ្ធិពលបំផុត សម្រាប់ប្រជាជនកម្ពុជានិងពុទ្ធសាសនិកជុំវិញពិភពលោក។</p>
+                    <p><span class="text-[#24211d] font-semibold">ការទទួលស្គាល់ជាអន្តរជាតិ (UNESCO)៖</span> នៅឆ្នាំ ១៩Grid (១៩៩២) ប្រាសាទអង្គរវត្ត រួមជាមួយតំបន់រមណីយដ្ឋានអង្គរទាំងមូល ត្រូវបានចុះបញ្ជីជា សម្បត្តិបេតិកភណ្ឌពិភពលោក របស់អង្គការយូណេស្កូ ដែលនេះជាចំណុចរបត់បើកទ្វារស្វាគមន៍អ្នកស្រាវជ្រាវ និងភ្ញៀវទេសចររាប់លាននាក់ពីគ្រប់ទិសទី។</p>
+                    <p><span class="text-[#24211d] font-semibold">ការអភិរក្ស និងការអភិវឌ្ឍប្រកបដោយចីរភាព៖</span> ក្រោមការគ្រប់គ្រងរបស់អាជ្ញាធរជាតិអប្សរា សហការជាមួយសហគមន៍អន្តរជាតិ (ដូចជា ICC-Angkor) ប្រាសាទនេះត្រូវបានថែរក្សាយ៉ាងដិតដល់តាមរយៈការជួសជុលតាមបច្ចេកទេសបុរាណវិទ្យា ដើម្បីធានាថាវានៅតែឈរជើងយ៉ាងរឹងមាំសម្រាប់កូនចៅជំនាន់ក្រោយ។</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="relative min-h-[600px] bg-cover bg-bottom flex flex-col justify-between overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent z-0"></div>
+        <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"></div>
+
+        <div class="relative z-10 w-full bg-black/60 border-t border-white/5 py-6 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wide text-center md:text-left">
+                <div class="text-gray-400">
+                    រ៉ន ហង្សសុវល័ក្ខ ~ និស្សិតដេប៉ាតឺម៉ង់ វិស្វកម្មបច្ចេកវិទ្យាព័ត៌មាន
+                </div>
+                <div class="khmer-heading text-[#B9701D] text-xs sm:text-sm tracking-widest drop-shadow-sm">
+                    វប្បធម៌ រុងរឿង ជាតិសាសន៍រឹងមាំ
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

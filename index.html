@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ប្រាសាទអង្គរវត្ត</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;700&family=Moul&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Kantumruy Pro", sans-serif;
+        }
+        .khmer-heading {
+            font-family: "Moul", cursive;
+        }
+    </style>
+</head>
+
+<body class="bg-[#114365] text-white selection:text-green-200">
+    <header
+        class="relative h-[450px] sm:h-[550px] md:h-[650px] bg-cover bg-center flex items-center justify-center"
+        style="background-image: linear-gradient(to bottom, rgba(20,79,119,0.3), rgba(20,79,119,0.75)), url('./images/page1.png')"
+    >
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative max-w-4xl mx-auto px-2.5 sm:px-4 text-center">
+            <h1 class="khmer-heading text-white text-2xl sm:text-4xl md:text-5xl lg:text-5xl leading-normal md:leading-snug">
+                ស្វាគមន៍មកកាន់ ប្រាសាទអង្គរវត្ត
+            </h1>
+        </div>
+    </header>
+    
+    <nav class="fixed top-0 left-0 w-full bg-[#2D2722]/95 border-b border-amber-900/40 shadow-lg transition-all duration-300 z-50">
+        <div class="max-w-8xl mx-auto px-2.5 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 sm:h-20 items-center">
+
+                <a href="./index.html" class="transition-transform hover:scale-105 duration-200">
+                    <img
+                        src="./images/logo.png"
+                        alt="Logo"
+                        class="h-9 sm:h-11 w-auto"
+                    >
+                </a>
+
+                <button id="menu-btn" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-stone-800 focus:outline-none transition-colors" aria-label="Toggle Menu">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                    <a href="./index.html" class="text-[#B9701D] border-b-2 border-[#B9701D] px-1 py-2">ទំព័រដើម</a>
+                    <a href="./detail.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">ការវិវត្ត</a>
+                    <a href="./about.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">បុព្វបុរស</a>
+                    <a href="./map.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">ផែនទី</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-[#2D2722]/95 border-t border-amber-900/20 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <div class="px-2.5 pt-3 pb-4 space-y-2">
+                <a href="./index.html" class="block bg-amber-950/40 text-[#B9701D] font-medium px-4 py-3 rounded-lg text-sm">ទំព័រដើម</a>
+                <a href="./detail.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg text-sm transition-colors">ការវិវត្ត</a>
+                <a href="./about.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg text-sm transition-colors">បុព្វបុរស</a>
+                <a href="./map.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg text-sm transition-colors">ផែនទី</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 py-12 md:py-24 space-y-16 md:space-y-32">
+
+        <section class="text-center space-y-6 max-w-4xl mx-auto">
+            <h2 class="khmer-heading text-2xl sm:text-3xl md:text-4xl text-[#B9701D]">
+                ស្រាយអាថ៌កំបាំងអង្គរវត្ត
+            </h2>
+            <p class="text-xs sm:text-sm md:text-base text-gray-100 leading-relaxed md:leading-loose px-2">
+                អង្គរវត្ត គឺជាប្រាសាទដ៏ធំបំផុត និងត្រូវបានអភិរក្សទុកបានល្អបំផុត ក្នុងតំបន់អង្គរ និងជាស្នាដៃស្ថាបត្យកម្មដ៏អស្ចារ្យបំផុតមួយរបស់អរិយធម៌ខ្មែរ។ សំណង់នេះត្រូវបានទទួលស្គាល់ជាសម្បត្តិបេតិកភណ្ឌពិភពលោក និងជានិមិត្តរូបនៃប្រទេសកម្ពុជា។
+            </p>
+        </section>
+
+        <section class="p-0 sm:p-6">
+            <div class="overflow-hidden rounded-xl">
+                <img
+                    src="./images/angkorwat.png"
+                    alt="Angkor Wat Model"
+                    class="w-full h-auto max-w-8xl object-cover hover:scale-[1.01] transition-transform duration-500"
+                >
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+            <div class="bg-[#1b3d54]/50 border border-white/10 p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
+                <div class="space-y-4">
+                    <div class="text-center">
+                        <h3 class="text-lg text-[#B9701D] font-bold tracking-wide group-hover:text-amber-500 transition-colors">
+                            កំពូលខាងឆ្វេង៖
+                        </h3>
+                        <p class="text-xs text-gray-300 mt-1">
+                            កំពូលនេះស្ថិតនៅខាងឆ្វេងនៃកំពូលកណ្តាល។
+                        </p>
+                    </div>
+                    
+                    <div class="overflow-hidden rounded-lg shadow-md border border-black/10">
+                        <img src="./images/left.png" alt="Left Tower" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+
+                    <ul class="text-xs sm:text-sm text-gray-200 list-disc pl-5 space-y-2.5 leading-relaxed">
+                        <li>តំណាងឱ្យកំពូលមួយនៃភ្នំព្រះសុមេរុ។</li>
+                        <li>ជាផ្នែកនៃរចនាសម្ព័ន្ធបញ្ចកោណ។</li>
+                        <li>បង្ហាញពីសមាមាត្រស្ថាបត្យកម្មដ៏ល្អឥតខ្ចោះរបស់ខ្មែរ</li>
+                        <li>កំពូលនេះភ្ជាប់ទៅកំពូលកណ្តាលតាមរយៈសាលាដើរ និងទីធ្លាខាងក្នុង។</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-[#1b3d54]/50 border border-white/10 p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
+                <div class="space-y-4">
+                    <div class="text-center">
+                        <h3 class="text-lg text-[#B9701D] font-bold tracking-wide group-hover:text-amber-500 transition-colors">
+                            កំពូលកណ្ដាល៖
+                        </h3>
+                        <p class="text-xs text-gray-300 mt-1">
+                            កំពូលនេះខ្ពស់ជាងគេនិងសំខាន់នៅក្នុងប្រាសាទអង្គរវត្ត。
+                        </p>
+                    </div>
+                    
+                    <div class="overflow-hidden rounded-lg shadow-md border border-black/10">
+                        <img src="./images/middle.png" alt="Middle Tower" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+
+                    <ul class="text-xs sm:text-sm text-gray-200 list-disc pl-5 space-y-2.5 leading-relaxed">
+                        <li>កម្ពស់ប្រហែល ៦៥ ម៉ែត្រ (២១៣ ហ្វីត)។</li>
+                        <li>ស្ថិតនៅចំកណ្តាលនៃប្រាសាទ។</li>
+                        <li>តំណាងឱ្យកំពូលកណ្តាលនៃភ្នំព្រះសុមេរុ។</li>
+                        <li>ជាទីស្នាក់នៅរបស់ព្រះវិស្ណុតាមជំនឿហิណ្ឌូ។</li>
+                        <li>បច្ចុប្បន្នជាកន្លែងសក្ការបូជាព្រះពុទ្ធ។</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-[#1b3d54]/50 border border-white/10 p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
+                <div class="space-y-4">
+                    <div class="text-center">
+                        <h3 class="text-lg text-[#B9701D] font-bold tracking-wide group-hover:text-amber-500 transition-colors">
+                            កំពូលខាងស្ដាំ៖
+                        </h3>
+                        <p class="text-xs text-gray-300 mt-1">
+                            កំពូលនេះស្ថិតនៅខាងស្តាំនៃកំពូលកណ្តាល។
+                        </p>
+                    </div>
+                    
+                    <div class="overflow-hidden rounded-lg shadow-md border border-black/10">
+                        <img src="./images/right.png" alt="Right Tower" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                    </div>
+
+                    <ul class="text-xs sm:text-sm text-gray-200 list-disc pl-5 space-y-2.5 leading-relaxed">
+                        <li>តំណាងឱ្យកំពូលមួយទៀតនៃភ្នំព្រះសុមេរុ។</li>
+                        <li>រួមជាមួយកំពូលផ្សេងៗបង្កើតជាទម្រង់ផ្កាប្រាំ</li>
+                        <li>ជានិមិត្តរូបនៃសកលលោកតាមជំនឿសាសនាហិណ្ឌូ</li>
+                        <li>កំពូលនេះភ្ជាប់ទៅកំពូលកណ្តាលតាមរយៈសាលាដើរ និងទីធ្លាខាងក្នុង។</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center pt-4">
+            <div class="lg:col-span-5 bg-slate-950/20 p-0 rounded-2xl border border-white/5 shadow-xl max-w-2xl mx-auto lg:max-w-none w-full">
+                <img
+                    src="./images/lake.png"
+                    alt="View of Water Moat"
+                    class="w-full h-auto rounded-xl object-cover shadow"
+                >
+            </div>
+
+            <div class="lg:col-span-7 space-y-6">
+                <h2 class="khmer-heading text-2xl sm:text-3xl text-[#B9701D] leading-tight">
+                    ស្រះទឹកព័ទ្ធជុំវិញ ប្រាសាទអង្គរវត្ត
+                </h2>
+
+                <div class="space-y-2 text-xs sm:text-sm text-gray-100 leading-relaxed md:leading-loose">
+                    <p>
+                        ស្រះទឹកនេះមាន ទទឹងប្រហែល ១៩០ ម៉ែត្រ ព័ទ្ធជុំវិញផ្ទៃដីជាង ២០០ ហិកតា មានរាងចតុកោណកែងជុំវិញប្រាសាទទាំងមូល។ ដោយសារទំហំដ៏ធំរបស់វា ស្រះទឹកនេះមើលទៅដូចជាបឹងធម្មជាតិមួយដែលព័ទ្ធជុំវិញប្រាសាទ។
+                    </p>
+                    <p>
+                        ស្រះទឹកជួយរក្សាសំណើមក្នុងដីជុំវិញប្រាសាទ។ វាជួយ ការពារការរីងស្ងួតនៃដី កាត់បន្ថយការរលំស្រុត និង រក្សាលំនឹងគ្រឹះប្រាសាទអស់រយៈពេលជាច្រើនសតវត្ស។
+                    </p>
+                    <p>
+                        អាណាចក្រខ្មែរបុរាណមានចំណេះដឹងខ្ពស់ខាងធារាសាស្ត្រ。 ស្រះទឹកអង្គរវត្តបានជួយ ស្តុកទឹកក្នុងរដូវវស្សា បង្ហូរទឹកលើស គ្រប់គ្រងកម្រិតទឹកជុំវិញប្រាសាទ។
+                    </p>
+                    <p>
+                        ស្រះទឹកក៏មានតួនាទីជារបាំងការពារផងដែរ។ អ្នកណាដែលចង់ចូលប្រាសាទ ត្រូវឆ្លងកាត់ស្ពាន ឬផ្លូវថ្មមុនសិន។ នេះធ្វើឱ្យការការពារប្រាសាទកាន់តែងាយស្រួល។
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="relative min-h-[600px] bg-cover bg-bottom flex flex-col justify-between overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent z-0"></div>
+
+        <div class="relative z-10 max-w-7xl w-full mx-auto px-2.5 sm:px-6 lg:px-8 pt-24 pb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            <div class="space-y-6 bg-[#2D2722]/95 p-6 rounded-2xl border border-amber-900/40 backdrop-blur-sm max-w-xl">
+                <a class="transition-transform hover:scale-105 duration-200">
+                    <img
+                        src="./images/logo.png"
+                        alt="Logo"
+                        class="h-9 sm:h-11 w-auto"
+                    >
+                </a>
+                <h2 class="khmer-heading text-[#B9701D] text-2xl sm:text-3xl md:text-4xl leading-snug drop-shadow-md">
+                    ប្រាសាទអង្គរវត្តបេតិកភណ្ឌ<br><br>ជាតិខ្មែរ
+                </h2>
+            </div>
+
+            <div class="bg-[#2D2722]/90 border border-amber-900/40 p-5 sm:p-6 rounded-2xl shadow-2xl space-y-4 max-w-md lg:ml-auto w-full backdrop-blur-md">
+                <h4 class="khmer-heading text-sm text-[#B9701D]">ផ្ញើសារសាកសួរព័ត៌មាន</h4>
+                <form action="#" method="POST" class="space-y-3.5 text-xs sm:text-sm" onsubmit="event.preventDefault();">
+                    <div>
+                        <label class="block text-gray-400 mb-1 font-medium">អ៊ីមែលរបស់អ្នក</label>
+                        <input type="email" placeholder="example@email.com" class="w-full bg-stone-900/90 border border-stone-700/80 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1 font-medium">មតិយោបល់ ឬ សំណួរ</label>
+                        <textarea rows="3" placeholder="សរសេរអត្ថបទនៅទីនេះ..." class="w-full bg-stone-900/90 border border-stone-700/80 rounded-lg p-2.5 text-white focus:outline-none focus:border-amber-500 transition-colors"></textarea>
+                    </div>
+                    <button class="w-full bg-[#B9701D] hover:bg-amber-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 shadow-md transform active:scale-[0.99]">
+                        បញ្ជូនសារ
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="relative z-10 w-full bg-black/60 border-t border-white/5 py-6 px-2.5 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wide text-center md:text-left">
+                <div class="text-gray-400">
+                    រ៉ន ហង្សសុវល័ក្ខ ~ និស្សិតដេប៉ាតឺម៉ង់ វិស្វកម្មបច្គេកវិទ្យាព័ត៌មាន
+                </div>
+                <div class="khmer-heading text-[#B9701D] text-xs sm:text-sm tracking-widest drop-shadow-sm">
+                    វប្បធម៌ រុងរឿង ជាតិសាសន៍រឹងមាំ
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

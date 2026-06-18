@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@source "../";
+@theme {
+    --font-kantumruy: "Kantumruy Pro", sans-serif;
+}
