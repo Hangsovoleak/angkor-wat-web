@@ -1,82 +1,62 @@
 <!DOCTYPE html>
-<html lang="km">
+<html lang="km" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ប្រាសាទអង្គរវត្ត</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;700&family=Moul&display=swap" rel="stylesheet">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <style>
         body {
             font-family: "Kantumruy Pro", sans-serif;
-        }
-        .khmer-heading {
-            font-family: "Moul", cursive;
-        }
-    </style>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;700&family=Moul&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: "Kantumruy Pro", sans-serif;
-        }
-        .khmer-heading {
-            font-family: "Moul", cursive;
-        }
-        body {
             margin: 0;
-            height: 100vh;
+            overflow-x: hidden;
         }
-
+ 
         model-viewer {
             width: 100%;
-            height: 600px;
-            display: block;
+            height: 320px;
+        }
+
+        @media (min-width: 640px) {
+            model-viewer {
+                height: 450px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            model-viewer {
+                height: 600px;
+            }
         }
     </style>
-    <script type="module"
-        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
-    </script>
 </head>
 
 <body class="bg-[#114365] text-white antialiased selection:text-white">
-    <header
-        class="relative h-[450px] sm:h-[550px] md:h-[650px] bg-cover bg-center flex items-center justify-center"
-        style="background-image: linear-gradient(to bottom, #144f774d, #144f77bf), url('./images/page3.png')"
-    >
-        <div class="absolute inset-0 bg-black/15"></div>
-        <div class="relative max-w-4xl mx-auto px-4 text-center">
-            <h1 class="khmer-heading text-white/50 text-2xl sm:text-4xl md:text-5xl lg:text-5xl">
-                ការវិវត្តឡើងរបស់ ប្រាសាទ
-            </h1>
-        </div>
-    </header>
-    <nav class="fixed top-0 left-0 w-full bg-[#2D2722]/95 border-b border-amber-900/40 shadow-lg transition-all duration-300">
-        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#2D2722]/95 border-b border-amber-900/40 shadow-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 sm:h-20 items-center">
-
+ 
                 <a href="./index.html" class="transition-transform hover:scale-105 duration-200">
-                    <img
-                        src="./images/logo.png"
-                        alt="Logo"
-                        class="h-9 sm:h-11 w-auto"
-                    >
+                    <img src="./images/logo.png" alt="Logo" class="h-9 sm:h-11 w-auto">
                 </a>
-
+ 
                 <button id="menu-btn" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-stone-800 focus:outline-none transition-colors" aria-label="Toggle Menu">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
-
+ 
                 <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
                     <a href="./index.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">ទំព័រដើម</a>
                     <a href="./detail.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">ការវិវត្ត</a>
                     <a href="./about.html" class="text-[#B9701D] border-b-2 border-[#B9701D] px-1 py-2">បុព្វបុរស</a>
                 </div>
+ 
             </div>
         </div>
-
+ 
         <div id="mobile-menu" class="hidden md:hidden bg-[#2D2722]/95 border-t border-amber-900/20 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
             <div class="px-4 pt-3 pb-4 space-y-2">
                 <a href="./index.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg text-sm transition-colors">ទំព័រដើម</a>
@@ -86,189 +66,184 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 space-y-16 md:space-y-32">
-        <section class="text-center space-y-6 max-w-4xl mx-auto">
-            <h2 class="khmer-heading text-2xl sm:text-3xl md:text-4xl text-[#B9701D]/80">
+    <header
+        class="relative h-[320px] sm:h-[450px] md:h-[650px] bg-cover bg-center flex items-center justify-center"
+        style="background-image: linear-gradient(to bottom, #144f774d, #144f77bf), url('./images/page3.png')"
+    >
+        <div class="absolute inset-0 bg-black/15"></div>
+    </header>
+
+    <main class="mx-auto pt-20 sm:pt-24">
+        <section class="text-center space-y-6 max-w-7xl mx-auto px-4">
+            <h2 class="font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#B9701D]/80">
                 ព្រះមហាក្សត្រអ្នកកសាងប្រាសាទអង្គរវត្ត
             </h2>
-            <p class="text-xs sm:text-sm md:text-base text-gray-100 px-0">
-                ព្រះបាទសូរ្យវរ្ម័នទី២ គឺជាព្រះមហាក្សត្រដ៏មានឥទ្ធិពលបំផុតមួយអង្គក្នុងប្រវត្តិសាស្ត្រខ្មែរ។ ព្រះអង្គត្រូវបានគេស្គាល់ថាជា ស្ថាបនិកនៃប្រាសាទអង្គរវត្ត ដែលជាសំណង់សាសនា និងស្ថាបត្យកម្មដ៏អស្ចារ្យបំផុតរបស់អាណាចក្រខ្មែរ និងជាបេតិកភណ្ឌពិភពលោកដ៏ល្បីល្បាញរហូតមកដល់សព្វថ្ងៃ។            </p>
+            <p class="text-sm sm:text-base lg:text-lg text-gray-100 leading-relaxed max-w-5xl mx-auto">
+                ព្រះបាទសូរ្យវរ្ម័នទី២ គឺជាព្រះមហាក្សត្រដ៏មានឥទ្ធិពលបំផុតមួយអង្គក្នុងប្រវត្តិសាស្ត្រខ្មែរ។ ព្រះអង្គត្រូវបានគេស្គាល់ថាជា ស្ថាបនិកនៃប្រាសាទអង្គរវត្ត ដែលជាសំណង់សាសនា និងស្ថាបត្យកម្មដ៏អស្ចារ្យបំផុតរបស់អាណាចក្រខ្មែរ និងជាបេតិកភណ្ឌពិភពលោកដ៏ល្បីល្បាញរហូតមកដល់សព្វថ្ងៃ។
+            </p>
         </section>
 
-        <section class="p-0 sm:p-6">
+        <section class="max-w-6xl mx-auto px-4 sm:px-8 lg:px-16 py-10">
             <div class="overflow-hidden">
-                <img
-                    src="./images/ii.png"
-                    alt="ii"
-                    class="w-full h-auto max-w-8xl object-cover hover:scale-[1.01] transition-transform duration-500"
-                >
+                <img src="./images/ii.png" alt="ii" class="w-full h-auto object-cover">
             </div>
         </section>
-        <div class="w-full relative mx-auto max-w-6xl p-8">
-            <div class="text-left mb-24">
-                <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+
+        <section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 mt-16 sm:mt-24 lg:mt-32">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="font-extrabold text-xl md:text-4xl tracking-wide text-white">
                     ១. ប្រវត្តិ និងការឡើងគ្រងរាជ្យ
                 </h2>
             </div>
 
-            <div class="relative flex flex-col md:flex-row items-center gap-6 bg-[#31668c]/60 p-6 md:p-8 rounded-xl border border-white/10 shadow-lg mt-12">
-                
-                <div class="w-full md:w-1/4 flex justify-center shrink-0 relative md:-mt-20 md:-mb-14 z-10">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 bg-[#31668c]/60 p-5 sm:p-6 lg:p-8 rounded-xl border border-white/10 shadow-lg">                
+                <div class="w-full md:w-1/4 flex justify-center shrink-0">
                     <img 
                         src="./images/d1.png" 
                         alt="king suryavarman II" 
-                        class="h-56 md:h-72 object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
+                        class="h-48 md:h-72 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
                     />
                 </div>
 
-                <div class="w-full md:w-3/4 flex flex-col justify-center items-center text-center text-white px-4 py-4">
-                    <p class="khmer-body text-sm md:text-base text-blue-100/90 leading-loose max-w-2xl whitespace-pre-line">
-                        ព្រះបាទសូរ្យវរ្ម័នទី២ បានឡើងគ្រងរាជ្យប្រហែលនៅឆ្នាំ ១១១៣ គ.ស.
-                        ក្នុងសម័យដែលអាណាចក្រខ្មែរកំពុងប្រឈមនឹងជម្លោះផ្ទៃក្នុង និងការប្រកួតប្រជែងអំណាច។ 
-                        មុនពេលឡើងគ្រងរាជ្យ ព្រះអង្គបានប្រយុទ្ធដើម្បីបង្រួបបង្រួមអំណាច និងយកឈ្នះគូប្រជែងជាច្រើន។ 
-                        បន្ទាប់ពីឡើងសោយរាជ្យ ព្រះអង្គបានធ្វើឱ្យអាណាចក្រមានស្ថិរភាព និងរីកចម្រើនយ៉ាងខ្លាំង។
+                <div class="w-full text-center md:text-left">
+                    <p class="text-sm sm:text-base lg:text-lg text-blue-100/90 font-medium leading-relaxed max-w-3xl mx-auto md:mx-0">
+                        ព្រះបាទសូរ្យវរ្ម័នទី២ បានឡើងគ្រងរាជ្យប្រហែលនៅឆ្នាំ ១១១៣ នៃគ្រិស្តសករាជ ក្នុងអំឡុងពេលដែលអាណាចក្រខ្មែរកំពុងប្រឈមមុខនឹងភាពចលាចលផ្នែកនយោបាយ និងការប្រកួតប្រជែងអំណាចក្នុងរាជវង្ស។ មុនពេលឡើងសោយរាជ្យ ព្រះអង្គបានដឹកនាំកងទ័ពធ្វើសង្គ្រាមដើម្បីបង្រួបបង្រួមអំណាច និងយកឈ្នះគូប្រជែងជាច្រើន ដោយបង្ហាញពីព្រះចេស្តាដ៏ក្លាហាន និងសមត្ថភាពដឹកនាំដ៏ខ្ពង់ខ្ពស់របស់ព្រះអង្គ។
+                        បន្ទាប់ពីឡើងសោយរាជ្យ ព្រះបាទសូរ្យវរ្ម័នទី២ បានខិតខំស្តារស្ថិរភាពនយោបាយ និងបង្រួបបង្រួមទឹកដីឱ្យស្ថិតក្រោមអំណាចកណ្តាលរបស់អាណាចក្រខ្មែរ។ ព្រះអង្គបានរៀបចំប្រព័ន្ធគ្រប់គ្រងរដ្ឋ បង្កើនកម្លាំងយោធា និងពង្រឹងទំនាក់ទំនងការទូតជាមួយរដ្ឋជិតខាង ដែលបានធ្វើឱ្យអាណាចក្រមានសន្តិភាព និងភាពរឹងមាំឡើងវិញ។
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="w-full relative mx-auto max-w-6xl p-8">
-            <div class="text-left mb-24">
-                <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+        </section>
+        <section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 mt-16 sm:mt-24 lg:mt-32">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="font-extrabold text-xl md:text-4xl tracking-wide text-white">
                     ២. ការពង្រីកអាណាចក្រ
                 </h2>
             </div>
 
-            <div class="relative flex flex-col md:flex-row items-center gap-6 bg-[#31668c]/60 p-6 md:p-8 rounded-xl border border-white/10 shadow-lg mt-12">
-                
-                <div class="w-full md:w-1/4 flex justify-center shrink-0 relative md:-mt-20 md:-mb-14 z-10">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 bg-[#31668c]/60 p-5 sm:p-6 lg:p-8 rounded-xl border border-white/10 shadow-lg">                
+                <div class="w-full md:w-1/4 flex justify-center shrink-0">
                     <img 
                         src="./images/d2.png" 
                         alt="king suryavarman II" 
-                        class="h-56 md:h-72 object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
+                        class="h-48 md:h-72 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
                     />
                 </div>
 
-                <div class="w-full md:w-3/4 flex flex-col justify-center items-center text-center text-white px-4 py-4">
-                    <p class="khmer-body text-sm md:text-base text-blue-100/90 leading-loose max-w-2xl whitespace-pre-line">
-                        ក្នុងរជ្ជកាលរបស់ព្រះអង្គ អាណាចក្រខ្មែរបានពង្រីកអំណាចយ៉ាងធំធេង ព្រះអង្គបានដឹកនាំកងទ័ពទៅកាន់តំបន់ជាច្រើន ដូចជា៖ ចម្ប៉ា (ភាគកណ្តាលវៀតណាមសព្វថ្ងៃ) ទឹកដីឡាវខ្លះ តំបន់ភាគខាងលិចនៃប្រទេសថៃសព្វថ្ងៃ ការពង្រីកទឹកដីនេះបានធ្វើឱ្យអាណាចក្រខ្មែរក្លាយជាអំណាចដ៏ធំមួយនៅអាស៊ីអាគ្នេយ៍។
-                    </p>
+                <div class="w-full text-center md:text-left">
+                    <p class="text-sm sm:text-base lg:text-lg text-blue-100/90 font-medium leading-relaxed max-w-3xl mx-auto md:mx-0">
+                        ក្នុងរជ្ជកាលរបស់ព្រះបាទសូរ្យវរ្ម័នទី២ អាណាចក្រខ្មែរបានឈានដល់ដំណាក់កាលនៃការពង្រីកអំណាចយ៉ាងខ្លាំងទាំងផ្នែកយោធា និងនយោបាយ។ បន្ទាប់ពីបានបង្រួបបង្រួមស្ថិរភាពផ្ទៃក្នុងរួច ព្រះអង្គបានដឹកនាំកងទ័ពធ្វើសង្គ្រាម និងពង្រីកឥទ្ធិពលទៅកាន់តំបន់ជាច្រើននៅអាស៊ីអាគ្នេយ៍។ កងទ័ពខ្មែរបានធ្វើចម្បាំងជាមួយនគរចម្ប៉ា ដែលស្ថិតនៅភាគកណ្តាលនៃប្រទេសវៀតណាមសព្វថ្ងៃ ព្រមទាំងបានពង្រីកឥទ្ធិពលទៅកាន់តំបន់មួយចំនួននៃប្រទេសឡាវ និងតំបន់ភាគខាងលិចនៃប្រទេសថៃសព្វថ្ងៃ។
+                        ក្រៅពីការពង្រីកទឹកដី ព្រះបាទសូរ្យវរ្ម័នទី២ ក៏បានបង្កើនទំនាក់ទំនងការទូត និងការធ្វើពាណិជ្ជកម្មជាមួយរដ្ឋជិតខាងផងដែរ។ ដោយមានកងទ័ពដ៏រឹងមាំ និងការគ្រប់គ្រងដ៏មានប្រសិទ្ធភាព អាណាចក្រខ្មែរបានក្លាយជាមហាអំណាចមួយដែលមានឥទ្ធិពលយ៉ាងខ្លាំងនៅក្នុងតំបន់អាស៊ីអាគ្នេយ៍។ ភាពរុងរឿងនេះបានជំរុញឱ្យមានការរីកចម្រើនលើវិស័យសេដ្ឋកិច្ច ស្ថាបត្យកម្ម និងវប្បធម៌ ដែលបានធ្វើឱ្យអាណាចក្រខ្មែរឈានដល់ចំណុចកំពូលមួយនៃប្រវត្តិសាស្ត្ររបស់ខ្លួន។                    </p>
                 </div>
             </div>
-        </div>
-        <div class="w-full relative mx-auto max-w-6xl p-8">
-            <div class="text-left mb-24">
-                <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+        </section>
+        <section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 mt-16 sm:mt-24 lg:mt-32">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="font-extrabold text-xl md:text-4xl tracking-wide text-white">
                     ៣. ជំនឿសាសនា
                 </h2>
             </div>
 
-            <div class="relative flex flex-col md:flex-row items-center gap-6 bg-[#31668c]/60 p-6 md:p-8 rounded-xl border border-white/10 shadow-lg mt-12">
-                
-                <div class="w-full md:w-1/4 flex justify-center shrink-0 relative md:-mt-20 md:-mb-14 z-10">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 bg-[#31668c]/60 p-5 sm:p-6 lg:p-8 rounded-xl border border-white/10 shadow-lg">                
+                <div class="w-full md:w-1/4 flex justify-center shrink-0">
                     <img 
                         src="./images/d3.png" 
                         alt="king suryavarman II" 
-                        class="h-56 md:h-72 object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
+                        class="h-48 md:h-72 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
                     />
                 </div>
 
-                <div class="w-full md:w-3/4 flex flex-col justify-center items-center text-center text-white px-4 py-4">
-                    <p class="khmer-body text-sm md:text-base text-blue-100/90 leading-loose max-w-2xl whitespace-pre-line">
-                        ក្នុងសាសនាព្រហ្មញ្ញ ព្រះវិស្ណុគឺជា៖ អ្នកថែរក្សាសកលលោក អ្នកការពារមនុស្សលោក អ្នករក្សាលំនឹងរវាងអំពើល្អ និងអំពើអាក្រក់ ដោយសារជំនឿនេះ ព្រះអង្គបានសាងសង់អង្គរវត្តជាប្រាសាទឧទ្ទិសថ្វាយព្រះវិស្ណុ។
+                <div class="w-full text-center md:text-left">
+                    <p class="text-sm sm:text-base lg:text-lg text-blue-100/90 font-medium leading-relaxed max-w-3xl mx-auto md:mx-0">
+                        ព្រះបាទសូរ្យវរ្ម័នទី២ គឺជាព្រះមហាក្សត្រដែលមានជំនឿយ៉ាងមុតមាំលើសាសនាព្រហ្មញ្ញនិកាយព្រះវិស្ណុ។ ក្នុងជំនឿព្រហ្មញ្ញ ព្រះវិស្ណុ (ព្រះនារាយណ៍) ត្រូវបានចាត់ទុកថាជាព្រះអាទិទេពដ៏សំខាន់មួយក្នុងចំណោមព្រះត្រីមូត្រ (ព្រះព្រហ្ម ព្រះវិស្ណុ និងព្រះសិវៈ) ដែលមានតួនាទីជាអ្នកថែរក្សា និងការពារសកលលោក។ ព្រះវិស្ណុត្រូវបានគេជឿថាជាអ្នករក្សាលំនឹងរវាងអំពើល្អ និងអំពើអាក្រក់ ជាអ្នកការពារមនុស្សលោក និងជាអ្នកធានានូវសន្តិភាព និងសណ្តាប់ធ្នាប់ក្នុងចក្រវាឡ។
+                        ដោយសារជំនឿដ៏រឹងមាំនេះ ព្រះបាទសូរ្យវរ្ម័នទី២ បានសម្រេចសាងសង់ប្រាសាទអង្គរវត្តឡើង ដើម្បីឧទ្ទិសថ្វាយព្រះវិស្ណុ ជំនួសឱ្យការឧទ្ទិសថ្វាយព្រះសិវៈដូចដែលព្រះមហាក្សត្រខ្មែរមុនៗភាគច្រើនបានអនុវត្ត។ ប្រាសាទអង្គរវត្តត្រូវបានរចនាឡើងដោយផ្អែកលើទស្សនៈសាសនាព្រហ្មញ្ញ ដែលតំណាងឱ្យភ្នំព្រះសុមេរុ ជាទីស្ថិតរបស់ទេវតាទាំងឡាយ និងជាមជ្ឈមណ្ឌលនៃចក្រវាឡតាមជំនឿបុរាណ។
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="w-full relative mx-auto max-w-6xl p-8">
-            <div class="text-left mb-24">
-                <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+        </section>
+        <section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 mt-16 sm:mt-24 lg:mt-32">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="font-extrabold text-xl md:text-4xl tracking-wide text-white">
                     ៤. ការកសាងប្រាសាទអង្គរវត្ត
                 </h2>
             </div>
 
-            <div class="relative flex flex-col md:flex-row items-center gap-6 bg-[#31668c]/60 p-6 md:p-8 rounded-xl border border-white/10 shadow-lg mt-12">
-                
-                <div class="w-full md:w-1/4 flex justify-center shrink-0 relative md:-mt-20 md:-mb-14 z-10">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 bg-[#31668c]/60 p-5 sm:p-6 lg:p-8 rounded-xl border border-white/10 shadow-lg">                
+                <div class="w-full md:w-1/4 flex justify-center shrink-0">
                     <img 
                         src="./images/d4.png" 
                         alt="king suryavarman II" 
-                        class="h-56 md:h-72 object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
+                        class="h-48 md:h-72 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
                     />
                 </div>
 
-                <div class="w-full md:w-3/4 flex flex-col justify-center items-center text-center text-white px-4 py-4">
-                    <p class="khmer-body text-sm md:text-base text-blue-100/90 leading-loose max-w-2xl whitespace-pre-line">
-                        ការសាងសង់អង្គរវត្តត្រូវបានចាប់ផ្តើមនៅដើមសតវត្សទី១២។ គម្រោងនេះត្រូវការ៖ កម្មកររាប់ម៉ឺននាក់ ជាងចម្លាក់រាប់ពាន់នាក់ ថ្មភក់រាប់លានដុំ រយៈពេលសាងសង់ប្រមាណ ៣៧ ឆ្នាំថ្មភាគច្រើនត្រូវបានដឹកពី ភ្នំគូលែន ដែលស្ថិតនៅចម្ងាយប្រមាណ ៥០ គីឡូម៉ែត្រពីអង្គរ។
-                    </p>
+                <div class="w-full text-center md:text-left">
+                    <p class="text-sm sm:text-base lg:text-lg text-blue-100/90 font-medium leading-relaxed max-w-3xl mx-auto md:mx-0">
+                        ការកសាងប្រាសាទអង្គរវត្តត្រូវបានចាប់ផ្តើមនៅដើមសតវត្សទី១២ ក្នុងរជ្ជកាលព្រះបាទសូរ្យវរ្ម័នទី២ ដោយមានគោលបំណងធ្វើជាប្រាសាទឧទ្ទិសថ្វាយព្រះវិស្ណុ (ព្រះនារាយណ៍) និងជានិមិត្តរូបនៃភាពរុងរឿង និងអំណាចរបស់អាណាចក្រខ្មែរ។ គម្រោងសំណង់ដ៏មហិមានេះត្រូវការកម្លាំងកម្មករ និងជាងសិប្បកម្មជាច្រើន ដោយមានកម្មកររាប់ម៉ឺននាក់ ជាងចម្លាក់ និងជាងសំណង់រាប់ពាន់នាក់ ដែលបានធ្វើការជាបន្តបន្ទាប់អស់រយៈពេលជាច្រើនទសវត្សរ៍។
+                        ក្នុងការសាងសង់នេះ គេបានប្រើប្រាស់ថ្មភក់រាប់លានដុំ ដែលភាគច្រើនត្រូវបានកាត់ និងដឹកជញ្ជូនពីភ្នំគូលែន ដែលមានទីតាំងស្ថិតនៅចម្ងាយប្រមាណ ៥០ គីឡូម៉ែត្រភាគឦសាននៃតំបន់អង្គរ។ ថ្មទាំងនេះត្រូវបានដឹកជញ្ជូនតាមបណ្តាញប្រឡាយ និងទន្លេ ដោយប្រើក្បូន និងមធ្យោបាយផ្សេងៗ ដែលបង្ហាញពីសមត្ថភាពវិស្វកម្ម និងការរៀបចំធនធានដ៏អស្ចារ្យរបស់អាណាចក្រខ្មែរ។                    </p>
                 </div>
             </div>
-        </div>
-        <div class="w-full relative mx-auto max-w-6xl p-8">
-            <div class="text-left mb-24">
-                <h2 class="khmer-heading text-xl md:text-2xl tracking-wide text-white leading-tight">
+        </section>
+        <section class="max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 mt-16 sm:mt-24 lg:mt-32">
+            <div class="mb-8 sm:mb-12">
+                <h2 class="font-extrabold text-xl md:text-4xl tracking-wide text-white">
                     ៥. ការសោយទិវង្គត
                 </h2>
             </div>
 
-            <div class="relative flex flex-col md:flex-row items-center gap-6 bg-[#31668c]/60 p-6 md:p-8 rounded-xl border border-white/10 shadow-lg mt-12">
-                
-                <div class="w-full md:w-1/4 flex justify-center shrink-0 relative md:-mt-20 md:-mb-14 z-10">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 bg-[#31668c]/60 p-5 sm:p-6 lg:p-8 rounded-xl border border-white/10 shadow-lg">                
+                <div class="w-full md:w-1/4 flex justify-center shrink-0">
                     <img 
                         src="./images/d5.png" 
                         alt="king suryavarman II" 
-                        class="h-56 md:h-72 object-contain filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
+                        class="h-48 md:h-72 drop-shadow-[0_10px_15px_rgba(0,0,0,0.5)]"
                     />
                 </div>
 
-                <div class="w-full md:w-3/4 flex flex-col justify-center items-center text-center text-white px-4 py-4">
-                    <p class="khmer-body text-sm md:text-base text-blue-100/90 leading-loose max-w-2xl whitespace-pre-line">
-                        ការសាងសង់អង្គរវត្តត្រូវបានចាប់ផ្តើមនៅដើមសតវត្សទី១២។ គម្រោងនេះត្រូវការ៖ កម្មកររាប់ម៉ឺននាក់ ជាងចម្លាក់រាប់ពាន់នាក់ ថ្មភក់រាប់លានដុំ រយៈពេលសាងសង់ប្រមាណ ៣៧ឆ្នាំ ថ្មភាគច្រើនត្រូវបានដឹកពី ភ្នំគូលែន ដែលស្ថិតនៅចម្ងាយប្រមាណ ៥០ គីឡូម៉ែត្រពីអង្គរ។ </p>
+                <div class="w-full text-center md:text-left">
+                    <p class="text-sm sm:text-base lg:text-lg text-blue-100/90 font-medium leading-relaxed max-w-3xl mx-auto md:mx-0">
+                        ព្រះបាទសូរ្យវរ្ម័នទី២ បានសោយទិវង្គតនៅប្រហែលចន្លោះឆ្នាំ ១១៤៩ ដល់ ១១៥០ នៃគ្រិស្តសករាជ បន្ទាប់ពីបានសោយរាជ្យអស់រយៈពេលប្រមាណជាង ៣០ ឆ្នាំ។ ក្នុងអំឡុងរជ្ជកាលរបស់ព្រះអង្គ អាណាចក្រខ្មែរបានឈានដល់កម្រិតនៃភាពរុងរឿងខ្ពស់ទាំងផ្នែកនយោបាយ យោធា សេដ្ឋកិច្ច និងស្ថាបត្យកម្ម ដោយមានការកសាងប្រាសាទអង្គរវត្តជាស្នាដៃដ៏អស្ចារ្យបំផុតមួយនៃអរិយធម៌ខ្មែរ។
+                        ទោះបីជាមិនមានឯកសារប្រវត្តិសាស្ត្រណាមួយបញ្ជាក់យ៉ាងច្បាស់អំពីមូលហេតុនៃការសោយទិវង្គតរបស់ព្រះអង្គក៏ដោយ ក៏អ្នកស្រាវជ្រាវមួយចំនួនបានសន្និដ្ឋានថា ព្រះអង្គប្រហែលជាសោយទិវង្គតដោយសារជរាភាព ឬក្នុងពេលដឹកនាំកងទ័ពធ្វើសង្គ្រាមនៅតំបន់នគរចម្ប៉ា (ចម្ប៉ា) ដែលស្ថិតនៅភាគកណ្តាលនៃប្រទេសវៀតណាមសព្វថ្ងៃ។ ការសោយទិវង្គតរបស់ព្រះអង្គបានធ្វើឱ្យអាណាចក្រខ្មែរជួបប្រទះនឹងការប្រែប្រួលផ្នែកនយោបាយ និងការប្រកួតប្រជែងអំណាចនៅក្នុងរាជវង្ស។
                 </div>
             </div>
-        </div>
-        <model-viewer
-            src="./glb/angkor_wat_temple_cambodia.glb"
-            alt="Angkor Wat"
-            camera-controls
-            auto-rotate
-            shadow-intensity="1">
-        </model-viewer>
+        </section>
 
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+        <section class="text-center space-y-6 max-w-7xl mx-auto px-4 mt-24">
+            <h2 class="font-extrabold text-2xl sm:text-4xl lg:text-5xl text-[#B9701D]/80">
+                ផែនទីនៃ ប្រាសាទ
+            </h2>
+        </section>
+
+        <div class="max-w-7xl mx-auto mt-16 sm:mt-24 px-4 sm:px-8 lg:px-16">
+            <model-viewer
+                src="./glb/angkor_wat_temple_cambodia.glb"
+                alt="Angkor Wat"
+                camera-controls
+                auto-rotate
+                shadow-intensity="1">
+            </model-viewer>
+        </div>
+
+        <section class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 py-12 sm:py-16 px-4 sm:px-8 lg:px-16">            
             <div class="bg-[#1b3d54]/50 border border-white/10 p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
-                <img
-                    src="./images/m1.png"
-                    alt="Aerial View of Water Moat"
-                    class="w-full h-auto rounded-xl object-cover shadow"
-                >
+                <img src="./images/m1.png" alt="Aerial View of Water Moat" class="w-full h-auto rounded-xl object-cover shadow">
             </div>
             <div class="bg-[#1b3d54]/50 border border-white/10 p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
-                <img
-                    src="./images/m2.png"
-                    alt="Aerial View of Water Moat"
-                    class="w-full h-auto rounded-xl object-cover shadow"
-                >
+                <img src="./images/m2.png" alt="Aerial View of Water Moat" class="w-full h-auto rounded-xl object-cover shadow">
             </div>
             <div class="bg-[#1b3d54]/50 border border-white/10 p-5 sm:p-6 rounded-2xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
-                <img
-                    src="./images/m3.png"
-                    alt="Aerial View of Water Moat"
-                    class="w-full h-auto rounded-xl object-cover shadow"
-                >
+                <img src="./images/m3.png" alt="Aerial View of Water Moat" class="w-full h-auto rounded-xl object-cover shadow">
             </div>
         </section>
     </main>
 
-    <footer class="relative min-h-[600px] bg-cover bg-bottom flex flex-col justify-between overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent z-0"></div>
-        <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"></div>
-
+    <footer class="relative min-h-[200px] bg-cover bg-bottom flex flex-col justify-end overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent"></div>
         <div class="relative z-10 w-full bg-black/60 border-t border-white/5 py-6 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wide text-center md:text-left">
+            <div class="mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wide text-center md:text-left">
                 <div class="text-gray-400">
                     រ៉ន ហង្សសុវល័ក្ខ ~ និស្សិតដេប៉ាតឺម៉ង់ វិស្វកម្មបច្ចេកវិទ្យាព័ត៌មាន
                 </div>
-                <div class="khmer-heading text-[#B9701D] text-xs sm:text-sm tracking-widest drop-shadow-sm">
+                <div class="text-[#B9701D] text-sm font-bold tracking-widest text-center">
                     វប្បធម៌ រុងរឿង ជាតិសាសន៍រឹងមាំ
                 </div>
             </div>
