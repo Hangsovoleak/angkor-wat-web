@@ -1,212 +1,304 @@
 <!DOCTYPE html>
 <html lang="km">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ប្រាសាទអង្គរវត្ត</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;700&family=Moul&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: "Kantumruy Pro", sans-serif;
-            overflow-x: hidden;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ប្រាសាទអង្គរវត្ត | ទំព័រដើម</title>
+  <meta name="description" content="ស្វែងយល់ពីប្រាសាទអង្គរវត្ត ស្នាដៃស្ថាបត្យកម្មដ៏អស្ចារ្យបំផុតរបស់អរិយធម៌ខ្មែរ ជាមួយទិដ្ឋភាព 3D ស្ថាបត្យកម្មកំពូលប្រាសាទ និងស្រះទឹកព័ទ្ធជុំវិញ។">
+  
+  <!-- Theme Color for iOS Safari / Mobile Chrome -->
+  <meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ប្រាសាទអង្គរវត្ត - អច្ឆរិយវត្ថុស្ថាបត្យកម្មខ្មែរ">
+  <meta property="og:description" content="ស្រាយអាថ៌កំបាំងអង្គរវត្ត សម្បត្តិបេតិកភណ្ឌពិភពលោក និងជានិមិត្តរូបនៃប្រទេសកម្ពុជា។">
+  <meta property="og:image" content="images/angkorwat.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="km_KH">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Google Fonts: Noto Serif Khmer & Noto Sans Khmer -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;500;600;700&family=Noto+Serif+Khmer:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 3D Model Viewer Web Component -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 </head>
 
-<body class="bg-[#114365] text-white antialiased selection:text-blue-200">
-    <nav class="fixed top-0 left-0 w-full z-50 bg-[#2D2722]/95">
-        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 sm:h-20 items-center">
- 
-                <a href="./index.html" class="transition-transform hover:scale-105 duration-200">
-                    <img src="./images/logo.png" alt="Logo" class="h-9 sm:h-11 w-auto">
-                </a>
- 
-                <button id="menu-btn" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-stone-800 focus:outline-none transition-colors" aria-label="Toggle Menu">
-                    <img src="./images/menu.svg" class="h-7 w-7" alt="humberger icon"/>
-                </button>
- 
-                <div class="hidden md:flex items-center gap-8 sm:text-base font-medium tracking-wide">
-                    <a href="./index.html" class="text-[#B9701D] border-b-2 border-[#B9701D] px-1 py-2">ទំព័រដើម</a>
-                    <a href="./detail.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">ការវិវត្ត</a>
-                    <a href="./about.html" class="text-gray-300 hover:text-white px-1 py-2 transition-colors duration-200">បុព្វបុរស</a>
-                </div>
- 
-            </div>
-        </div>
- 
-        <div id="mobile-menu" class="hidden md:hidden bg-[#2D2722]/95 border-t border-amber-900/20 shadow-xl max-h-[calc(100vh-5rem)] overflow-y-auto">
-            <div class="px-4 pt-3 pb-4 space-y-2">
-                <a href="./index.html" class="block bg-amber-950/40 text-[#B9701D] font-medium px-4 py-3 rounded-lg sm:text-base">ទំព័រដើម</a>
-                <a href="./detail.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg sm:text-base transition-colors">ការវិវត្ត</a>
-                <a href="./about.html" class="block text-gray-300 hover:text-white hover:bg-stone-800/50 px-4 py-3 rounded-lg sm:text-base transition-colors">បុព្វបុរស</a>
-            </div>
-        </div>
+<body>
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content" class="skip-link">រំលងទៅខ្លឹមសារចម្បង</a>
+
+  <!-- Apple-Style Translucent Sticky Navbar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo-link" aria-label="ទំព័រដើម ប្រាសាទអង្គរវត្ត">
+        <img src="images/logo.png" alt="ឡូហ្គោប្រាសាទអង្គរវត្ត" class="nav-logo-img" width="120" height="28">
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="nav-menu" aria-label="ការរុករកចម្បង">
+        <a href="index.html" class="nav-link active" aria-current="page">ទំព័រដើម</a>
+        <a href="detail.html" class="nav-link">ការវិវត្ត</a>
+        <a href="about.html" class="nav-link">បុព្វបុរស</a>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="menu-btn" class="nav-toggle-btn" aria-label="បើកម៉ឺនុយ" aria-expanded="false" aria-controls="mobile-menu">
+        <svg class="nav-toggle-icon" viewBox="0 0 24 24" fill="none">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Full-Width Dropdown Sheet -->
+    <nav id="mobile-menu" class="mobile-nav-sheet" aria-label="ការរុករកលើទូរស័ព្ទ">
+      <ul class="mobile-nav-list">
+        <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link active" aria-current="page">ទំព័រដើម</a></li>
+        <li class="mobile-nav-item"><a href="detail.html" class="mobile-nav-link">ការវិវត្ត</a></li>
+        <li class="mobile-nav-item"><a href="about.html" class="mobile-nav-link">បុព្វបុរស</a></li>
+      </ul>
     </nav>
+  </header>
 
-    <header
-        class="relative h-[450px] sm:h-[550px] md:h-[650px] bg-cover bg-center flex items-center justify-center"
-        style="background-image: linear-gradient(to bottom, #144f774d, #144f77bf), url('./images/page1.png')"
-    >
-        <div class="absolute inset-0 bg-black/15"></div>
-    </header>
+  <!-- Main Content -->
+  <main id="main-content">
 
-    <main class="max-w-7xl mx-auto pt-20 sm:pt-24 px-4 sm:px-8 lg:px-16">
+    <!-- Hero Section -->
+    <section class="hero fade-rise">
+      <div class="hero-pill-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 5V3M14 5V3M15 21v-3a3 3 0 0 0-6 0v3M18 3v8M18 5H6M22 11H2M22 9v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9M6 3v8"/>
+        </svg>
+        <span>សម្បត្តិបេតិកភណ្ឌពិភពលោក</span>
+      </div>
 
-        <section class="text-center space-y-6 max-w-6xl mx-auto">
-            <div class="mx-auto flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-white/10">
-                <img src="./images/castle.svg" class="h-8 w-8 md:h-10 md:w-10"/>
-            </div>
-            <h2 class="font-extrabold text-2xl sm:text-3xl md:text-6xl text-[#B9701D]/80">
-                ស្រាយអាថ៌កំបាំងអង្គរវត្ត
-            </h2>
-            <p class="text-sm sm:text-base lg:text-lg text-gray-100 leading-relaxed max-w-5xl mx-auto">
-                អង្គរវត្ត គឺជាប្រាសាទដ៏ធំបំផុត និងត្រូវបានអភិរក្សទុកបានល្អបំផុត ក្នុងតំបន់អង្គរ និងជាស្នាដៃស្ថាបត្យកម្មដ៏អស្ចារ្យបំផុតមួយរបស់អរិយធម៌ខ្មែរ។ សំណង់នេះត្រូវបានទទួលស្គាល់ជាសម្បត្តិបេតិកភណ្ឌពិភពលោក និងជានិមិត្តរូបនៃប្រទេសកម្ពុជា។
-            </p>
-        </section>
+      <h1 class="hero-title">ស្រាយអាថ៌កំបាំងអង្គរវត្ត</h1>
+      
+      <p class="hero-subtitle">
+        អង្គរវត្ត គឺជាប្រាសាទដ៏ធំបំផុត និងត្រូវបានអភិរក្សទុកបានល្អបំផុត ក្នុងតំបន់អង្គរ និងជាស្នាដៃស្ថាបត្យកម្មដ៏អស្ចារ្យបំផុតមួយរបស់អរិយធម៌ខ្មែរ។ សំណង់នេះត្រូវបានទទួលស្គាល់ជាសម្បត្តិបេតិកភណ្ឌពិភពលោក និងជានិមិត្តរូបនៃប្រទេសកម្ពុជា។
+      </p>
 
-        <section class="py-8">
-            <div class="overflow-hidden rounded-xl">
-                <img
-                    src="./images/angkorwat.png"
-                    alt="Angkor Wat Model"
-                    class="w-full h-auto px-4 sm:px-8 lg:px-16 object-cover hover:scale-[1.01] transition-transform duration-500"
-                >
-            </div>
-        </section>
-        <div class="mx-auto flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-white/10">
-            <img src="./images/receipt-text.svg" class="h-8 w-8 md:h-10 md:w-10" />
+      <a href="#model-section" class="hero-cta">
+        <span>ស្វែងយល់បន្ថែម</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </a>
+    </section>
+
+    <!-- 3D Model Interactive Display Section -->
+    <section id="model-section" class="section section--base">
+      <div class="container fade-rise">
+        <div class="model-wrapper">
+          <model-viewer
+            src="glb/angkor_wat_temple_cambodia.glb"
+            poster="images/angkorwat.png"
+            alt="គំរូ 3D ស្ថាបត្យកម្មនៃប្រាសាទអង្គរវត្ត"
+            camera-controls
+            auto-rotate
+            rotation-per-second="16deg"
+            shadow-intensity="1.1"
+            exposure="1.0"
+            loading="lazy">
+          </model-viewer>
+
+          <div class="model-hint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+            </svg>
+            <span>ចុច និងអូសដើម្បីបង្វិល</span>
+          </div>
         </div>
-        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 py-16">
-            <div class="bg-[#1b3d54]/50 border border-white/10 p-6 lg:p-7 rounded-3xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
-                <div class="space-y-4">
-                    <div class="text-center">
-                        <h3 class="text-sm text-[#B9701D]/90 font-bold group-hover:text-amber-500 transition-colors">
-                            កំពូលខាងឆ្វេង៖
-                        </h3>
-                        <p class="sm:text-base text-gray-300 mt-2">
-                            កំពូលនេះស្ថិតនៅខាងឆ្វេងនៃកំពូលកណ្តាល។
-                        </p>
-                    </div>
-                    
-                    <div class="overflow-hidden rounded-lg shadow-md border border-black/10">
-                        <img src="./images/left.png" alt="Left Tower" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
+      </div>
+    </section>
 
-                    <ul class="text-sm sm:text-base text-gray-200 list-disc pl-5 space-y-3 leading-relaxed">
-                        <li>តំណាងឱ្យកំពូលមួយនៃភ្នំព្រះសុមេរុ។</li>
-                        <li>ជាផ្នែកនៃរចនាសម្ព័ន្ធបញ្ចកោណ។</li>
-                        <li>បង្ហាញពីសមាមាត្រស្ថាបត្យកម្មដ៏ល្អឥតខ្ចោះរបស់ខ្មែរ</li>
-                        <li>កំពូលនេះភ្ជាប់ទៅកំពូលកណ្តាលតាមរយៈសាលាដើរ និងទីធ្លាខាងក្នុង។</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-[#1b3d54]/50 border border-white/10 p-6 lg:p-7 rounded-3xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
-                <div class="space-y-4">
-                    <div class="text-center">
-                        <h3 class="text-sm text-[#B9701D]/90 font-bold group-hover:text-amber-500 transition-colors">
-                            កំពូលកណ្ដាល៖
-                        </h3>
-                        <p class="sm:text-base text-gray-300 mt-2">
-                            កំពូលនេះខ្ពស់ជាងគេនិងសំខាន់នៅក្នុងប្រាសាទអង្គរវត្ត
-                        </p>
-                    </div>
-                    
-                    <div class="overflow-hidden rounded-lg shadow-md border border-black/10">
-                        <img src="./images/middle.png" alt="Middle Tower" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-
-                    <ul class="text-sm sm:text-base text-gray-200 list-disc pl-5 space-y-3 leading-relaxed">
-                        <li>កម្ពស់ប្រហែល ៦៥ ម៉ែត្រ (២១៣ ហ្វីត)។</li>
-                        <li>ស្ថិតនៅចំកណ្តាលនៃប្រាសាទ។</li>
-                        <li>តំណាងឱ្យកំពូលកណ្តាលនៃភ្នំព្រះសុមេរុ។</li>
-                        <li>ជាទីស្នាក់នៅរបស់ព្រះវិស្ណុតាមជំនឿហิណ្ឌូ។</li>
-                        <li>បច្ចុប្បន្នជាកន្លែងសក្ការបូជាព្រះពុទ្ធ។</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="bg-[#1b3d54]/50 border border-white/10 p-6 lg:p-7 rounded-3xl shadow-xl flex flex-col justify-between hover:border-amber-500/30 transition-all duration-300 group">
-                <div class="space-y-4">
-                    <div class="text-center">
-                        <h3 class="text-sm text-[#B9701D]/90 font-bold group-hover:text-amber-500 transition-colors">
-                            កំពូលខាងស្ដាំ៖
-                        </h3>
-                        <p class="sm:text-base text-gray-300 mt-2">
-                            កំពូលនេះស្ថិតនៅខាងស្តាំនៃកំពូលកណ្តាល។
-                        </p>
-                    </div>
-                    
-                    <div class="overflow-hidden rounded-lg shadow-md border border-black/10">
-                        <img src="./images/right.png" alt="Right Tower" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
-                    </div>
-
-                    <ul class="text-sm sm:text-base text-gray-200 list-disc pl-5 space-y-3 leading-relaxed">
-                        <li>តំណាងឱ្យកំពូលមួយទៀតនៃភ្នំព្រះសុមេរុ។</li>
-                        <li>រួមជាមួយកំពូលផ្សេងៗបង្កើតជាទម្រង់ផ្កាប្រាំ</li>
-                        <li>ជានិមិត្តរូបនៃសកលលោកតាមជំនឿសាសនាហិណ្ឌូ</li>
-                        <li>កំពូលនេះភ្ជាប់ទៅកំពូលកណ្តាលតាមរយៈសាលាដើរ និងទីធ្លាខាងក្នុង។</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        <div class="mx-auto flex items-center justify-center h-12 w-12 md:h-16 md:w-16 rounded-full bg-white/10">
-            <img src="./images/waves-horizontal.svg" class="h-8 w-8 md:h-10 md:w-10" />
+    <!-- 3 Tower Sections: Apple Widget / App Store Feature Card Style -->
+    <section class="section section--grouped">
+      <div class="container-wide">
+        <div class="section-header fade-rise">
+          <span class="section-eyebrow">ស្ថាបត្យកម្មកំពូលប្រាសាទ</span>
+          <h2 class="section-title">កំពូលទាំងបីនៃប្រាសាទអង្គរវត្ត</h2>
         </div>
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center py-20">
-            <div class="lg:col-span-5 overflow-hidden shadow-2xl lg:sticky lg:top-28 self-start">
-                <img
-                    src="./images/lake.png"
-                    alt="View of Water Moat"
-                    class="w-full h-auto object-cover hover:scale-105 duration-500"
-                >
-            </div>
 
-            <div class="lg:col-span-7 space-y-6">
-                <h2 class="text-2xl sm:text-5xl font-extrabold text-[#B9701D]/80">
-                    ស្រះទឹកព័ទ្ធជុំវិញ ប្រាសាទអង្គរវត្ត
-                </h2>
+        <!-- Carousel Track (Desktop: 3-column row, Mobile: Horizontal Scroll-Snap) -->
+        <div class="towers-carousel-track fade-rise">
 
-                <div class="space-y-4 text-sm sm:text-base lg:text-lg text-gray-100 leading-relaxed">
-                    <p>
-                        ស្រះទឹកនេះមាន ទទឹងប្រហែល ១៩០ ម៉ែត្រ ព័ទ្ធជុំវិញផ្ទៃដីជាង ២០០ ហិកតា មានរាងចតុកោណកែងជុំវិញប្រាសាទទាំងមូល។ ដោយសារទំហំដ៏ធំរបស់វា ស្រះទឹកនេះមើលទៅដូចជាបឹងធម្មជាតិមួយដែលព័ទ្ធជុំវិញប្រាសាទ។
-                    </p>
-                    <p>
-                        ស្រះទឹកជួយរក្សាសំណើមក្នុងដីជុំវិញប្រាសាទ។ វាជួយ ការពារការរីងស្ងួតនៃដី កាត់បន្ថយការរលំស្រុត និង រក្សាលំនឹងគ្រឹះប្រាសាទអស់រយៈពេលជាច្រើនសតវត្ស។
-                    </p>
-                    <p>
-                        អាណាចក្រខ្មែរបុរាណមានចំណេះដឹងខ្ពស់ខាងធារាសាស្ត្រ ស្រះទឹកអង្គរវត្តបានជួយ ស្តុកទឹកក្នុងរដូវវស្សា បង្ហូរទឹកលើស គ្រប់គ្រងកម្រិតទឹកជុំវិញប្រាសាទ។
-                    </p>
-                    <p>
-                        ស្រះទឹកក៏មានតួនាទីជារបាំងការពារផងដែរ។ អ្នកណាដែលចង់ចូលប្រាសាទ ត្រូវឆ្លងកាត់ស្ពាន ឬផ្លូវថ្មមុនសិន។ នេះធ្វើឱ្យការការពារប្រាសាទកាន់តែងាយស្រួល។
-                    </p>
-                </div>
+          <!-- Left Tower Card -->
+          <article class="tower-card">
+            <div class="tower-img-wrapper">
+              <img src="images/left.png" alt="កំពូលខាងឆ្វេងនៃប្រាសាទអង្គរវត្ត" class="tower-img" width="380" height="238" loading="lazy" decoding="async">
             </div>
-        </section>
-    </main>
+            <div class="tower-header">
+              <h3 class="tower-title">កំពូលខាងឆ្វេង៖</h3>
+              <p class="tower-subtitle">កំពូលនេះស្ថិតនៅខាងឆ្វេងនៃកំពូលកណ្តាល។</p>
+            </div>
+            <ul class="ios-list">
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>តំណាងឱ្យកំពូលមួយនៃភ្នំព្រះសុមេរុ។</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>ជាផ្នែកនៃរចនាសម្ព័ន្ធបញ្ចកោណ។</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>បង្ហាញពីសមាមាត្រស្ថាបត្យកម្មដ៏ល្អឥតខ្ចោះរបស់ខ្មែរ</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>កំពូលនេះភ្ជាប់ទៅកំពូលកណ្តាលតាមរយៈសាលាដើរ និងទីធ្លាខាងក្នុង។</span>
+              </li>
+            </ul>
+          </article>
 
-    <footer class="relative min-h-[200px] bg-cover bg-bottom flex flex-col justify-end overflow-hidden">
-        <div class="z-10 w-full bg-black/60 border-t border-white/5 py-6 px-4 sm:px-6 lg:px-8">
-            <div class="mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wide text-center md:text-left">
-                <div class="text-gray-400">
-                    រ៉ន ហង្សសុវល័ក្ខ ~ និស្សិតដេប៉ាតឺម៉ង់ វិស្វកម្មបច្ចេកវិទ្យាព័ត៌មាន
-                </div>
-                <div class="text-[#B9701D] text-sm font-bold tracking-widest text-center">
-                    វប្បធម៌ រុងរឿង ជាតិសាសន៍រឹងមាំ
-                </div>
+          <!-- Middle Tower Card -->
+          <article class="tower-card">
+            <div class="tower-img-wrapper">
+              <img src="images/middle.png" alt="កំពូលកណ្ដាលនៃប្រាសាទអង្គរវត្ត" class="tower-img" width="380" height="238" loading="lazy" decoding="async">
             </div>
+            <div class="tower-header">
+              <h3 class="tower-title">កំពូលកណ្ដាល៖</h3>
+              <p class="tower-subtitle">កំពូលនេះខ្ពស់ជាងគេនិងសំខាន់នៅក្នុងប្រាសាទអង្គរវត្ត</p>
+            </div>
+            <ul class="ios-list">
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>កម្ពស់ប្រហែល ៦៥ ម៉ែត្រ (២១៣ ហ្វីត)។</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>ស្ថិតនៅចំកណ្តាលនៃប្រាសាទ។</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>តំណាងឱ្យកំពូលកណ្តាលនៃភ្នំព្រះសុមេរុ។</span>
+              </li>
+              <!-- Typo Fixed: ហិណ្ឌូ with correct Khmer vowel -->
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>ជាទីស្នាក់នៅរបស់ព្រះវិស្ណុតាមជំនឿហិណ្ឌូ។</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>បច្ចុប្បន្នជាកន្លែងសក្ការបូជាព្រះពុទ្ធ។</span>
+              </li>
+            </ul>
+          </article>
+
+          <!-- Right Tower Card -->
+          <article class="tower-card">
+            <div class="tower-img-wrapper">
+              <img src="images/right.png" alt="កំពូលខាងស្ដាំនៃប្រាសាទអង្គរវត្ត" class="tower-img" width="380" height="238" loading="lazy" decoding="async">
+            </div>
+            <div class="tower-header">
+              <h3 class="tower-title">កំពូលខាងស្ដាំ៖</h3>
+              <p class="tower-subtitle">កំពូលនេះស្ថិតនៅខាងស្តាំនៃកំពូលកណ្តាល។</p>
+            </div>
+            <ul class="ios-list">
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>តំណាងឱ្យកំពូលមួយទៀតនៃភ្នំព្រះសុមេរុ។</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>រួមជាមួយកំពូលផ្សេងៗបង្កើតជាទម្រង់ផ្កាប្រាំ</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>ជានិមិត្តរូបនៃសកលលោកតាមជំនឿសាសនាហិណ្ឌូ</span>
+              </li>
+              <li class="ios-list-row">
+                <span class="ios-list-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>កំពូលនេះភ្ជាប់ទៅកំពូលកណ្តាលតាមរយៈសាលាដើរ និងទីធ្លាខាងក្នុង។</span>
+              </li>
+            </ul>
+          </article>
+
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+    <!-- Water Moat Section: Full-Bleed Image with Centered Column -->
+    <section class="section section--base">
+      <div class="container fade-rise">
+        <div class="section-header">
+          <span class="section-eyebrow">ប្រព័ន្ធធារាសាស្ត្របុរាណ</span>
+          <h2 class="section-title">ស្រះទឹកព័ទ្ធជុំវិញ ប្រាសាទអង្គរវត្ត</h2>
+        </div>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+        <div class="moat-visual-frame">
+          <img src="images/lake.png" alt="ទិដ្ឋភាពស្រះទឹកព័ទ្ធជុំវិញប្រាសាទអង្គរវត្ត" class="moat-img" width="1024" height="520" loading="lazy" decoding="async">
+        </div>
+
+        <div class="moat-text-content">
+          <p>
+            ស្រះទឹកនេះមាន ទទឹងប្រហែល ១៩០ ម៉ែត្រ ព័ទ្ធជុំវិញផ្ទៃដីជាង ២០០ ហិកតា មានរាងចតុកោណកែងជុំវិញប្រាសាទទាំងមូល។ ដោយសារទំហំដ៏ធំរបស់វា ស្រះទឹកនេះមើលទៅដូចជាបឹងធម្មជាតិមួយដែលព័ទ្ធជុំវិញប្រាសាទ។
+          </p>
+          <p>
+            ស្រះទឹកជួយរក្សាសំណើមក្នុងដីជុំវិញប្រាសាទ។ វាជួយ ការពារការរីងស្ងួតនៃដី កាត់បន្ថយការរលំស្រុត និង រក្សាលំនឹងគ្រឹះប្រាសាទអស់រយៈពេលជាច្រើនសតវត្ស។
+          </p>
+          <p>
+            អាណាចក្រខ្មែរបុរាណមានចំណេះដឹងខ្ពស់ខាងធារាសាស្ត្រ ស្រះទឹកអង្គរវត្តបានជួយ ស្តុកទឹកក្នុងរដូវវស្សា បង្ហូរទឹកលើស គ្រប់គ្រងកម្រិតទឹកជុំវិញប្រាសាទ។
+          </p>
+          <p>
+            ស្រះទឹកក៏មានតួនាទីជារបាំងការពារផងដែរ។ អ្នកណាដែលចង់ចូលប្រាសាទ ត្រូវឆ្លងកាត់ស្ពាន ឬផ្លូវថ្មមុនសិន។ នេះធ្វើឱ្យការការពារប្រាសាទកាន់តែងាយស្រួល។
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimal Apple-Style Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-author">
+        រ៉ន ហង្សសុវល័ក្ខ ~ និស្សិតដេប៉ាតឺម៉ង់ វិស្វកម្មបច្ចេកវិទ្យាព័ត៌មាន
+      </div>
+      <div class="footer-motto">
+        វប្បធម៌ រុងរឿង ជាតិសាសន៍រឹងមាំ
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
 </body>
 </html>

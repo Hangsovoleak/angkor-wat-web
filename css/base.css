@@ -1,0 +1,251 @@
+/* ==========================================================================
+   BASE & KHMER TYPOGRAPHY - APPLE / iOS DESIGN SYSTEM
+   Angkor Wat Architectural Showcase
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Semantic Variables (Light Theme by Default)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Surfaces & Backgrounds */
+  --bg: #FBFBFD;
+  --bg-elevated: #FFFFFF;
+  --bg-grouped: #F5F5F7;
+  --bg-secondary: #EBEBED;
+  
+  /* Text & Labels */
+  --text: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --text-tertiary: #AEAEB2;
+  
+  /* Hairline Separators & Borders */
+  --separator: rgba(0, 0, 0, 0.08);
+  --separator-opaque: #E5E5EA;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  
+  /* Refined Sandstone Gold Accent (Only accent color) */
+  --accent: #A9792B;
+  --accent-hover: #8D631F;
+  --accent-subtle: rgba(169, 121, 43, 0.1);
+  --accent-ring: rgba(169, 121, 43, 0.4);
+  
+  /* Navigation Bar */
+  --nav-bg: rgba(255, 255, 255, 0.72);
+  --nav-height: 48px;
+  
+  /* Soft Layered Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 30px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.08), 0 16px 48px rgba(0, 0, 0, 0.08);
+  --shadow-lightbox: 0 24px 64px rgba(0, 0, 0, 0.35);
+
+  /* Typography */
+  --font-serif: 'Noto Serif Khmer', serif;
+  --font-sans: 'Noto Sans Khmer', 'Kantumruy Pro', 'Khmer OS', system-ui, -apple-system, sans-serif;
+  
+  /* Radii (Apple Continuous Feel) */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 9999px;
+  
+  /* Strict 8px Spacing Scale */
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-128: 128px;
+  
+  /* Layout Max Widths */
+  --content-max-width: 1024px;
+  --wide-max-width: 1200px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Dark Theme (Automatic via prefers-color-scheme)
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --bg-elevated: #1C1C1E;
+    --bg-grouped: #121214;
+    --bg-secondary: #2C2C2E;
+    
+    --text: #F5F5F7;
+    --text-secondary: #8E8E93;
+    --text-tertiary: #48484A;
+    
+    --separator: rgba(255, 255, 255, 0.12);
+    --separator-opaque: #38383A;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    
+    --accent: #D4A24C;
+    --accent-hover: #E2B669;
+    --accent-subtle: rgba(212, 162, 76, 0.15);
+    --accent-ring: rgba(212, 162, 76, 0.5);
+    
+    --nav-bg: rgba(0, 0, 0, 0.72);
+    
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.5), 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 4px 20px rgba(0, 0, 0, 0.6), 0 16px 56px rgba(0, 0, 0, 0.5);
+    --shadow-lightbox: 0 24px 64px rgba(0, 0, 0, 0.75);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Universal Reset & Sizing
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  line-height: 1.95;
+  min-height: 100vh;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   4. Accessible Skip Link & Focus Ring
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--bg-elevated);
+  color: var(--accent);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent);
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-card);
+  z-index: 10000;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   5. Khmer Typography Hierarchy
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  color: var(--text);
+  letter-spacing: normal;
+  text-transform: none;
+  text-wrap: balance;
+  line-height: 1.5;
+}
+
+/* Noto Serif Khmer for Headings: Elegant, Quiet, Majestic */
+h1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 1.45;
+  margin-bottom: var(--space-16);
+}
+
+h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+  line-height: 1.5;
+  margin-bottom: var(--space-16);
+}
+
+h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.55;
+  margin-bottom: var(--space-8);
+}
+
+p {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+  line-height: 1.95;
+  text-align: left;
+  max-width: 62ch;
+  margin-bottom: 1.1em;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong, b {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

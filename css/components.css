@@ -1,0 +1,744 @@
+/* ==========================================================================
+   COMPONENTS - APPLE / iOS DESIGN SYSTEM
+   Cards, iOS Grouped Lists, 3D Model Frame, Carousel, Lightbox & Motion
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Hero Banner Component
+   -------------------------------------------------------------------------- */
+.hero {
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 12vh var(--space-24) 8vh;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-subtle);
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--space-24);
+}
+
+.hero-pill-badge svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  max-width: 900px;
+  margin: 0 auto var(--space-24);
+}
+
+.hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 1.05rem + 0.4vw, 1.35rem);
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 680px;
+  margin: 0 auto var(--space-48);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.hero-cta:hover {
+  opacity: 0.9;
+}
+
+.hero-cta:active {
+  transform: scale(0.97);
+}
+
+.hero-cta svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+}
+
+/* --------------------------------------------------------------------------
+   2. 3D Model Display Container
+   -------------------------------------------------------------------------- */
+.model-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--separator);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+model-viewer {
+  width: 100%;
+  height: 420px;
+  background-color: var(--bg-elevated);
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  model-viewer {
+    height: 520px;
+  }
+}
+
+@media (min-width: 1024px) {
+  model-viewer {
+    height: 580px;
+  }
+}
+
+.model-hint {
+  position: absolute;
+  bottom: var(--space-16);
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-elevated);
+  border: 1px solid var(--separator);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.model-hint svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--accent);
+}
+
+/* --------------------------------------------------------------------------
+   3. Tower Cards & Mobile Carousel
+   -------------------------------------------------------------------------- */
+.towers-carousel-track {
+  display: flex;
+  gap: var(--space-24);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-16);
+  /* Hide scrollbar for clean iOS feel */
+  scrollbar-width: none;
+}
+
+.towers-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .towers-carousel-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+    padding-bottom: 0;
+  }
+}
+
+.tower-card {
+  flex: 0 0 86%;
+  scroll-snap-align: center;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--separator);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-24);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+  .tower-card {
+    flex: 0 0 65%;
+  }
+}
+
+@media (min-width: 900px) {
+  .tower-card {
+    flex: unset;
+  }
+}
+
+.tower-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated);
+}
+
+.tower-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-grouped);
+  margin-bottom: var(--space-24);
+}
+
+.tower-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tower-card:hover .tower-img {
+  transform: scale(1.03);
+}
+
+.tower-header {
+  margin-bottom: var(--space-16);
+}
+
+.tower-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.tower-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   4. iOS Grouped List (Rows with Hairlines & Accent Checkmarks)
+   -------------------------------------------------------------------------- */
+.ios-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.ios-list-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--separator);
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.ios-list-row:last-child {
+  border-bottom: none;
+}
+
+.ios-list-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: var(--accent);
+}
+
+.ios-list-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* --------------------------------------------------------------------------
+   5. Moat Full-Bleed Section
+   -------------------------------------------------------------------------- */
+.moat-visual-frame {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-48);
+  border: 1px solid var(--separator);
+  background: var(--bg-grouped);
+}
+
+.moat-img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.moat-text-content {
+  max-width: 62ch;
+  margin: 0 auto;
+}
+
+.moat-text-content p {
+  color: var(--text);
+  margin-bottom: var(--space-24);
+}
+
+/* --------------------------------------------------------------------------
+   6. Detail Page: iOS Minimal Timeline
+   -------------------------------------------------------------------------- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-64);
+}
+
+@media (min-width: 768px) {
+  .timeline {
+    gap: var(--space-96);
+  }
+}
+
+.era-article {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--separator);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-32) var(--space-24);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .era-article {
+    padding: var(--space-48);
+  }
+}
+
+.era-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--separator);
+  padding-bottom: var(--space-24);
+  margin-bottom: var(--space-32);
+}
+
+.era-title-group h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 4px;
+}
+
+.era-subtitle {
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.era-number {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 300;
+  color: var(--text-tertiary);
+  line-height: 1;
+  user-select: none;
+}
+
+/* Era Gallery: 1 Big + 3 Small Row */
+.era-gallery-block {
+  margin-bottom: var(--space-32);
+}
+
+.era-hero-image-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--bg-grouped);
+  margin-bottom: var(--space-16);
+  cursor: zoom-in;
+  border: 1px solid var(--separator);
+}
+
+.era-hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.era-hero-image-wrap:hover img {
+  transform: scale(1.02);
+}
+
+.era-thumb-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-16);
+}
+
+.era-thumb-wrap {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-grouped);
+  cursor: zoom-in;
+  border: 1px solid var(--separator);
+}
+
+.era-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.era-thumb-wrap:hover img {
+  transform: scale(1.04);
+}
+
+.era-prose {
+  max-width: 68ch;
+}
+
+.era-prose p {
+  margin-bottom: var(--space-16);
+}
+
+.era-label {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* --------------------------------------------------------------------------
+   7. About Page: King Showcase, Sticky TOC & 5 Chapters
+   -------------------------------------------------------------------------- */
+.king-showcase-visual {
+  width: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--space-48);
+  border: 1px solid var(--separator);
+  background: var(--bg-grouped);
+}
+
+.king-showcase-img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+/* Sticky Segmented Control TOC on Desktop */
+.toc-track-wrap {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .toc-track-wrap {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: calc(var(--nav-height) + var(--space-16));
+    z-index: 990;
+    margin-bottom: var(--space-48);
+    pointer-events: none;
+  }
+
+  .toc-track {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--separator);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-card);
+    list-style: none;
+  }
+
+  .toc-segment-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .toc-segment-btn:hover {
+    color: var(--text);
+  }
+
+  .toc-segment-btn.active {
+    background: var(--bg-elevated);
+    color: var(--text);
+    box-shadow: var(--shadow-sm);
+    font-weight: 600;
+  }
+}
+
+/* 5 Chapter Sections (Alternating Two-Column on Desktop) */
+.chapter-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+  margin-bottom: var(--space-64);
+  scroll-margin-top: calc(var(--nav-height) + var(--space-64));
+}
+
+@media (min-width: 900px) {
+  .chapter-row {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-48);
+    margin-bottom: var(--space-96);
+  }
+
+  .chapter-row:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+.chapter-figure {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chapter-img-container {
+  width: 100%;
+  max-width: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-grouped);
+  border: 1px solid var(--separator);
+  box-shadow: var(--shadow-card);
+}
+
+.chapter-img {
+  width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.chapter-img-container:hover .chapter-img {
+  transform: scale(1.02);
+}
+
+.chapter-text {
+  flex: 1.2;
+}
+
+.chapter-number {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.chapter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  margin-bottom: var(--space-16);
+}
+
+/* Map Grid */
+.map-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-24);
+  margin-top: var(--space-32);
+}
+
+@media (min-width: 768px) {
+  .map-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.map-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--separator);
+  box-shadow: var(--shadow-card);
+  background: var(--bg-elevated);
+  cursor: zoom-in;
+}
+
+.map-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.map-card:hover img {
+  transform: scale(1.03);
+}
+
+/* --------------------------------------------------------------------------
+   8. iOS-Style Lightbox Modal
+   -------------------------------------------------------------------------- */
+.ios-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-24);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.25s ease;
+}
+
+.ios-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.ios-lightbox-dialog {
+  position: relative;
+  max-width: 960px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.95);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ios-lightbox.active .ios-lightbox-dialog {
+  transform: scale(1);
+}
+
+.ios-lightbox-img-wrap {
+  width: 100%;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lightbox);
+}
+
+.ios-lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.ios-lightbox-caption {
+  font-size: 0.95rem;
+  color: #FFFFFF;
+  opacity: 0.8;
+  margin-top: var(--space-16);
+  text-align: center;
+}
+
+.ios-lightbox-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.ios-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.ios-lightbox-close:active {
+  transform: scale(0.95);
+}
+
+.ios-lightbox-close svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* --------------------------------------------------------------------------
+   9. Subtle Physical Motion & Stagger
+   -------------------------------------------------------------------------- */
+.fade-rise {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-rise.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-rise {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

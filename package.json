@@ -1,19 +1,16 @@
 {
   "name": "angkorwat",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Angkor Wat Temple - Apple-Quality Design, Khmer Typography",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx serve ."
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "tailwindcss": "^4.3.0"
-  },
-  "dependencies": {
-    "@tailwindcss/cli": "^4.3.0"
-  }
+  "keywords": [
+    "angkorwat",
+    "khmer",
+    "static-site"
+  ],
+  "author": "Rorn Hangsovoleak",
+  "license": "ISC"
 }
