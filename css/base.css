@@ -57,9 +57,9 @@
   --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.08), 0 16px 48px rgba(0, 0, 0, 0.08);
   --shadow-lightbox: 0 24px 64px rgba(0, 0, 0, 0.35);
 
-  /* Typography Families */
-  --font-serif: 'Noto Serif Khmer', serif;
-  --font-sans: 'Noto Sans Khmer', 'Kantumruy Pro', 'Khmer OS', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Typography Families - Modern Apple-Grade Khmer Typography */
+  --font-serif: 'Noto Serif Khmer', 'Kantumruy Pro', serif;
+  --font-sans: 'Kantumruy Pro', 'Noto Sans Khmer', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   
   /* Apple Continuous Radii */
   --radius-sm: 10px;
@@ -150,8 +150,8 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   /* Body at least 17px (1.0625rem) on phones, smoothly scaling up */
-  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.2rem);
-  line-height: 1.9;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 2.0;
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
@@ -216,15 +216,16 @@ h1, h2, h3, h4 {
   letter-spacing: normal;
   text-transform: none;
   text-wrap: balance;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
+  line-height: 1.55;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 /* Noto Serif Khmer for Headings: Elegant, Quiet, Majestic */
 h1 {
   font-family: var(--font-serif);
   font-weight: 700;
-  font-size: clamp(2.2rem, 5vw + 0.8rem, 4.5rem);
+  font-size: clamp(2.2rem, 5vw + 0.8rem, 4.2rem);
   line-height: 1.5;
   margin-bottom: var(--space-16);
 }
@@ -232,28 +233,29 @@ h1 {
 h2 {
   font-family: var(--font-serif);
   font-weight: 600;
-  font-size: clamp(1.6rem, 2.5vw + 0.6rem, 2.6rem);
-  line-height: 1.5;
+  font-size: clamp(1.6rem, 2.5vw + 0.6rem, 2.5rem);
+  line-height: 1.55;
   margin-bottom: var(--space-16);
 }
 
 h3 {
   font-family: var(--font-sans);
   font-weight: 600;
-  font-size: clamp(1.25rem, 1.5vw + 0.6rem, 1.6rem);
-  line-height: 1.5;
+  font-size: clamp(1.25rem, 1.5vw + 0.6rem, 1.55rem);
+  line-height: 1.55;
   margin-bottom: var(--space-8);
 }
 
 p {
   font-family: var(--font-sans);
   font-weight: 400;
-  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.2rem);
-  line-height: 1.9;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 2.0;
   text-align: left;
-  max-width: 62ch;
-  margin-bottom: 1.1em;
-  overflow-wrap: anywhere;
+  max-width: 65ch;
+  margin-bottom: 1.25em;
+  word-break: normal;
+  overflow-wrap: break-word;
   text-wrap: pretty;
   letter-spacing: normal;
   text-transform: none;
