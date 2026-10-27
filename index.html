@@ -40,7 +40,7 @@
   <header class="site-header">
     <div class="nav-container">
       <a href="index.html" class="nav-logo-link" aria-label="ទំព័រដើម ប្រាសាទអង្គរវត្ត">
-        <img src="images/logo.png" alt="ឡូហ្គោប្រាសាទអង្គរវត្ត" class="nav-logo-img" width="120" height="28">
+        <img src="images/logo.png" alt="ឡូហ្គោប្រាសាទអង្គរវត្ត" class="nav-logo-img" width="120" height="28" loading="eager">
       </a>
 
       <!-- Desktop Links -->
@@ -123,7 +123,7 @@
     </section>
 
     <!-- 3 Tower Sections: Apple Widget / App Store Feature Card Style -->
-    <section class="section section--grouped">
+    <section class="section section--grouped section-content-visibility">
       <div class="container-wide">
         <div class="section-header fade-rise">
           <span class="section-eyebrow">ស្ថាបត្យកម្មកំពូលប្រាសាទ</span>
@@ -135,9 +135,11 @@
 
           <!-- Left Tower Card -->
           <article class="tower-card">
-            <div class="tower-img-wrapper">
-              <img src="images/left.png" alt="កំពូលខាងឆ្វេងនៃប្រាសាទអង្គរវត្ត" class="tower-img" width="380" height="238" loading="lazy" decoding="async">
-            </div>
+            <figure class="img-card img-card--landscape img-card--tower img-card--interactive" data-lightbox data-lightbox-group="towers">
+              <div class="img-card__frame">
+                <img src="images/left.png" alt="កំពូលខាងឆ្វេងនៃប្រាសាទអង្គរវត្ត" width="391" height="220" loading="lazy" decoding="async">
+              </div>
+            </figure>
             <div class="tower-header">
               <h3 class="tower-title">កំពូលខាងឆ្វេង៖</h3>
               <p class="tower-subtitle">កំពូលនេះស្ថិតនៅខាងឆ្វេងនៃកំពូលកណ្តាល។</p>
@@ -172,9 +174,11 @@
 
           <!-- Middle Tower Card -->
           <article class="tower-card">
-            <div class="tower-img-wrapper">
-              <img src="images/middle.png" alt="កំពូលកណ្ដាលនៃប្រាសាទអង្គរវត្ត" class="tower-img" width="380" height="238" loading="lazy" decoding="async">
-            </div>
+            <figure class="img-card img-card--landscape img-card--tower img-card--interactive" data-lightbox data-lightbox-group="towers">
+              <div class="img-card__frame">
+                <img src="images/middle.png" alt="កំពូលកណ្ដាលនៃប្រាសាទអង្គរវត្ត" width="397" height="223" loading="lazy" decoding="async">
+              </div>
+            </figure>
             <div class="tower-header">
               <h3 class="tower-title">កំពូលកណ្ដាល៖</h3>
               <p class="tower-subtitle">កំពូលនេះខ្ពស់ជាងគេនិងសំខាន់នៅក្នុងប្រាសាទអង្គរវត្ត</p>
@@ -216,9 +220,11 @@
 
           <!-- Right Tower Card -->
           <article class="tower-card">
-            <div class="tower-img-wrapper">
-              <img src="images/right.png" alt="កំពូលខាងស្ដាំនៃប្រាសាទអង្គរវត្ត" class="tower-img" width="380" height="238" loading="lazy" decoding="async">
-            </div>
+            <figure class="img-card img-card--landscape img-card--tower img-card--interactive" data-lightbox data-lightbox-group="towers">
+              <div class="img-card__frame">
+                <img src="images/right.png" alt="កំពូលខាងស្ដាំនៃប្រាសាទអង្គរវត្ត" width="399" height="225" loading="lazy" decoding="async">
+              </div>
+            </figure>
             <div class="tower-header">
               <h3 class="tower-title">កំពូលខាងស្ដាំ៖</h3>
               <p class="tower-subtitle">កំពូលនេះស្ថិតនៅខាងស្តាំនៃកំពូលកណ្តាល។</p>
@@ -255,36 +261,62 @@
       </div>
     </section>
 
-    <!-- Water Moat Section: Full-Bleed Image with Centered Column -->
-    <section class="section section--base">
+    <!-- Water Moat Section: Wide 21/9 Image Frame with Text Below -->
+    <section class="section section--base section-content-visibility">
       <div class="container fade-rise">
         <div class="section-header">
           <span class="section-eyebrow">ប្រព័ន្ធធារាសាស្ត្របុរាណ</span>
           <h2 class="section-title">ស្រះទឹកព័ទ្ធជុំវិញ ប្រាសាទអង្គរវត្ត</h2>
         </div>
 
-        <div class="moat-visual-frame">
-          <img src="images/lake.png" alt="ទិដ្ឋភាពស្រះទឹកព័ទ្ធជុំវិញប្រាសាទអង្គរវត្ត" class="moat-img" width="1024" height="520" loading="lazy" decoding="async">
-        </div>
+        <div class="moat-section-wrap">
+          <figure class="img-card img-card--wide img-card--interactive" data-lightbox data-lightbox-group="moat">
+            <div class="img-card__frame">
+              <img src="images/lake.png" alt="ទិដ្ឋភាពស្រះទឹកព័ទ្ធជុំវិញប្រាសាទអង្គរវត្ត" width="630" height="418" loading="lazy" decoding="async">
+            </div>
+          </figure>
 
-        <div class="moat-text-content">
-          <p>
-            ស្រះទឹកនេះមាន ទទឹងប្រហែល ១៩០ ម៉ែត្រ ព័ទ្ធជុំវិញផ្ទៃដីជាង ២០០ ហិកតា មានរាងចតុកោណកែងជុំវិញប្រាសាទទាំងមូល។ ដោយសារទំហំដ៏ធំរបស់វា ស្រះទឹកនេះមើលទៅដូចជាបឹងធម្មជាតិមួយដែលព័ទ្ធជុំវិញប្រាសាទ។
-          </p>
-          <p>
-            ស្រះទឹកជួយរក្សាសំណើមក្នុងដីជុំវិញប្រាសាទ។ វាជួយ ការពារការរីងស្ងួតនៃដី កាត់បន្ថយការរលំស្រុត និង រក្សាលំនឹងគ្រឹះប្រាសាទអស់រយៈពេលជាច្រើនសតវត្ស។
-          </p>
-          <p>
-            អាណាចក្រខ្មែរបុរាណមានចំណេះដឹងខ្ពស់ខាងធារាសាស្ត្រ ស្រះទឹកអង្គរវត្តបានជួយ ស្តុកទឹកក្នុងរដូវវស្សា បង្ហូរទឹកលើស គ្រប់គ្រងកម្រិតទឹកជុំវិញប្រាសាទ។
-          </p>
-          <p>
-            ស្រះទឹកក៏មានតួនាទីជារបាំងការពារផងដែរ។ អ្នកណាដែលចង់ចូលប្រាសាទ ត្រូវឆ្លងកាត់ស្ពាន ឬផ្លូវថ្មមុនសិន។ នេះធ្វើឱ្យការការពារប្រាសាទកាន់តែងាយស្រួល។
-          </p>
+          <div class="moat-text-content">
+            <p>
+              ស្រះទឹកនេះមាន ទទឹងប្រហែល ១៩០ ម៉ែត្រ ព័ទ្ធជុំវិញផ្ទៃដីជាង ២០០ ហិកតា មានរាងចតុកោណកែងជុំវិញប្រាសាទទាំងមូល។ ដោយសារទំហំដ៏ធំរបស់វា ស្រះទឹកនេះមើលទៅដូចជាបឹងធម្មជាតិមួយដែលព័ទ្ធជុំវិញប្រាសាទ។
+            </p>
+            <p>
+              ស្រះទឹកជួយរក្សាសំណើមក្នុងដីជុំវិញប្រាសាទ។ វាជួយ ការពារការរីងស្ងួតនៃដី កាត់បន្ថយការរលំស្រុត និង រក្សាលំនឹងគ្រឹះប្រាសាទអស់រយៈពេលជាច្រើនសតវត្ស។
+            </p>
+            <p>
+              អាណាចក្រខ្មែរបុរាណមានចំណេះដឹងខ្ពស់ខាងធារាសាស្ត្រ ស្រះទឹកអង្គរវត្តបានជួយ ស្តុកទឹកក្នុងរដូវវស្សា បង្ហូរទឹកលើស គ្រប់គ្រងកម្រិតទឹកជុំវិញប្រាសាទ។
+            </p>
+            <p>
+              ស្រះទឹកក៏មានតួនាទីជារបាំងការពារផងដែរ។ អ្នកណាដែលចង់ចូលប្រាសាទ ត្រូវឆ្លងកាត់ស្ពាន ឬផ្លូវថ្មមុនសិន។ នេះធ្វើឱ្យការការពារប្រាសាទកាន់តែងាយស្រួល។
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- iOS-Style Image Lightbox Modal -->
+  <div id="lightbox-modal" class="ios-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="lightbox-caption">
+    <div class="ios-lightbox-dialog">
+      <button id="lightbox-close" class="ios-lightbox-close" aria-label="បិទផ្ទាំងរូបភាព">
+        <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <button id="lightbox-prev" class="ios-lightbox-nav-btn ios-lightbox-nav-prev" aria-label="រូបភាពមុន">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button id="lightbox-next" class="ios-lightbox-nav-btn ios-lightbox-nav-next" aria-label="រូបភាពបន្ទាប់">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="ios-lightbox-img-wrap">
+        <img id="lightbox-img" class="ios-lightbox-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="">
+      </div>
+      <div class="ios-lightbox-meta">
+        <p id="lightbox-caption" class="ios-lightbox-caption"></p>
+        <span id="lightbox-counter" class="ios-lightbox-counter" aria-live="polite"></span>
+      </div>
+    </div>
+  </div>
 
   <!-- Minimal Apple-Style Footer -->
   <footer class="site-footer">

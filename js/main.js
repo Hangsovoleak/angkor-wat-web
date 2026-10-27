@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initScrollAnimations();
+  initImageLoading();
   initLightbox();
   initTableOfContents();
 });
@@ -87,7 +88,6 @@ function initScrollAnimations() {
   const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Stagger entrance if multiple elements appear together
         const target = entry.target;
         const delay = target.dataset.delay ? parseInt(target.dataset.delay, 10) : 0;
         if (delay > 0) {
@@ -105,8 +105,7 @@ function initScrollAnimations() {
     rootMargin: '0px 0px -40px 0px'
   });
 
-  elements.forEach((el, index) => {
-    // Apply automatic 60ms stagger to siblings
+  elements.forEach((el) => {
     const parent = el.parentElement;
     if (parent && parent.children.length > 1) {
       const siblingIndex = Array.prototype.indexOf.call(parent.children, el);
@@ -119,7 +118,42 @@ function initScrollAnimations() {
 }
 
 /* --------------------------------------------------------------------------
- * 3. iOS-Style Image Lightbox Modal
+ * 3. Unified Image Card Load & Error State Handling
+ * -------------------------------------------------------------------------- */
+function initImageLoading() {
+  const cardImages = document.querySelectorAll('.img-card__frame img');
+  cardImages.forEach(img => {
+    if (img.complete && img.naturalWidth > 0) {
+      img.classList.add('is-loaded');
+    } else {
+      img.addEventListener('load', () => {
+        img.classList.add('is-loaded');
+      }, { once: true });
+
+      img.addEventListener('error', () => {
+        const frame = img.closest('.img-card__frame');
+        if (frame) {
+          frame.classList.add('is-error');
+          img.style.display = 'none';
+          const fallback = document.createElement('div');
+          fallback.className = 'img-card-fallback';
+          fallback.innerHTML = `
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>${img.alt || 'មិនអាចផ្ទុករូបភាពបាន'}</span>
+          `;
+          frame.appendChild(fallback);
+        }
+      }, { once: true });
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+ * 4. iOS Photos-Style Lightbox Modal (Multi-image, Arrow Nav & Swipe)
  * -------------------------------------------------------------------------- */
 function initLightbox() {
   const lightbox = document.getElementById('lightbox-modal');
@@ -129,16 +163,80 @@ function initLightbox() {
 
   if (!lightbox || !lightboxImg || !lightboxClose) return;
 
+  let currentGroup = [];
+  let currentIndex = 0;
   let lastActiveElement = null;
+  let touchStartX = 0;
   let touchStartY = 0;
 
-  function openLightbox(src, alt) {
-    lastActiveElement = document.activeElement;
-    lightboxImg.src = src;
-    lightboxImg.alt = alt || 'រូបភាពពង្រីក';
-    if (lightboxCaption) {
-      lightboxCaption.textContent = alt || '';
+  // Create Prev / Next Buttons if not already present
+  let prevBtn = lightbox.querySelector('.ios-lightbox-nav-prev');
+  let nextBtn = lightbox.querySelector('.ios-lightbox-nav-next');
+  let counterEl = lightbox.querySelector('.ios-lightbox-counter');
+
+  const dialog = lightbox.querySelector('.ios-lightbox-dialog');
+  if (dialog) {
+    if (!prevBtn) {
+      prevBtn = document.createElement('button');
+      prevBtn.className = 'ios-lightbox-nav-btn ios-lightbox-nav-prev';
+      prevBtn.setAttribute('aria-label', 'រូបភាពមុន');
+      prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="15 18 9 12 15 6"/></svg>';
+      dialog.appendChild(prevBtn);
     }
+    if (!nextBtn) {
+      nextBtn = document.createElement('button');
+      nextBtn.className = 'ios-lightbox-nav-btn ios-lightbox-nav-next';
+      nextBtn.setAttribute('aria-label', 'រូបភាពបន្ទាប់');
+      nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"/></svg>';
+      dialog.appendChild(nextBtn);
+    }
+    const metaWrap = lightbox.querySelector('.ios-lightbox-meta');
+    if (metaWrap && !counterEl) {
+      counterEl = document.createElement('span');
+      counterEl.className = 'ios-lightbox-counter';
+      metaWrap.insertBefore(counterEl, metaWrap.firstChild);
+    }
+  }
+
+  function updateImage() {
+    if (currentIndex < 0 || currentIndex >= currentGroup.length) return;
+    const item = currentGroup[currentIndex];
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.alt || 'រូបភាពពង្រីក';
+    if (lightboxCaption) {
+      lightboxCaption.textContent = item.alt || '';
+    }
+    if (counterEl) {
+      const khmerNumerals = ['០','១','២','៣','៤','៥','៦','៧','៨','៩'];
+      const toKhmer = n => String(n).split('').map(d => khmerNumerals[parseInt(d, 10)] || d).join('');
+      counterEl.textContent = `${toKhmer(currentIndex + 1)} / ${toKhmer(currentGroup.length)}`;
+      counterEl.style.display = currentGroup.length > 1 ? 'inline-block' : 'none';
+    }
+    if (prevBtn) {
+      prevBtn.style.display = currentGroup.length > 1 ? 'flex' : 'none';
+    }
+    if (nextBtn) {
+      nextBtn.style.display = currentGroup.length > 1 ? 'flex' : 'none';
+    }
+  }
+
+  function openLightbox(groupName, index) {
+    lastActiveElement = document.activeElement;
+    
+    // Collect all elements belonging to this group
+    const targets = Array.from(document.querySelectorAll(`[data-lightbox][data-lightbox-group="${groupName}"]`));
+    currentGroup = targets.map(target => {
+      const img = target.tagName.toLowerCase() === 'img' ? target : target.querySelector('img');
+      return {
+        src: img ? img.src : '',
+        alt: img ? img.alt : ''
+      };
+    }).filter(item => item.src);
+
+    if (!currentGroup.length) return;
+    currentIndex = Math.max(0, Math.min(index, currentGroup.length - 1));
+
+    updateImage();
     lightbox.classList.add('active');
     lightbox.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -155,59 +253,86 @@ function initLightbox() {
     }
   }
 
-  // Register lightbox trigger targets
-  document.querySelectorAll('[data-lightbox]').forEach(target => {
-    target.setAttribute('role', 'button');
-    target.setAttribute('tabindex', '0');
-    target.setAttribute('aria-label', 'ចុចដើម្បីមើលរូបភាពធំ');
+  function showNext() {
+    if (currentGroup.length <= 1) return;
+    currentIndex = (currentIndex + 1) % currentGroup.length;
+    updateImage();
+  }
 
-    function handleTrigger() {
-      const img = target.tagName.toLowerCase() === 'img' ? target : target.querySelector('img');
-      if (img) {
-        openLightbox(img.src, img.alt);
-      }
+  function showPrev() {
+    if (currentGroup.length <= 1) return;
+    currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length;
+    updateImage();
+  }
+
+  // Bind trigger click on all [data-lightbox] cards
+  document.querySelectorAll('[data-lightbox]').forEach(card => {
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', 'ចុចដើម្បីមើលរូបភាពធំ');
+
+    function trigger() {
+      const group = card.dataset.lightboxGroup || 'default';
+      const siblings = Array.from(document.querySelectorAll(`[data-lightbox][data-lightbox-group="${group}"]`));
+      const idx = siblings.indexOf(card);
+      openLightbox(group, idx >= 0 ? idx : 0);
     }
 
-    target.addEventListener('click', handleTrigger);
-    target.addEventListener('keydown', (e) => {
+    card.addEventListener('click', trigger);
+    card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        handleTrigger();
+        trigger();
       }
     });
   });
 
+  if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+  if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
   lightboxClose.addEventListener('click', closeLightbox);
 
-  // Close when clicking blurred backdrop
   lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
+    if (e.target === lightbox || e.target.classList.contains('ios-lightbox-img-wrap')) {
       closeLightbox();
     }
   });
 
-  // Keyboard navigation: Escape key to close
+  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') {
       closeLightbox();
+    } else if (e.key === 'ArrowRight') {
+      showNext();
+    } else if (e.key === 'ArrowLeft') {
+      showPrev();
     }
   });
 
-  // Touch swipe-down to dismiss (iOS physical gesture)
+  // Touch Swipe (Left/Right to navigate, Down to dismiss)
   lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
   }, { passive: true });
 
   lightbox.addEventListener('touchend', (e) => {
-    const touchEndY = e.changedTouches[0].clientY;
-    if (touchEndY - touchStartY > 80) {
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    const deltaY = e.changedTouches[0].clientY - touchStartY;
+
+    if (Math.abs(deltaY) > 80 && Math.abs(deltaY) > Math.abs(deltaX)) {
       closeLightbox();
+    } else if (Math.abs(deltaX) > 50) {
+      if (deltaX < 0) {
+        showNext();
+      } else {
+        showPrev();
+      }
     }
   }, { passive: true });
 }
 
 /* --------------------------------------------------------------------------
- * 4. Sticky Segmented Control TOC Active Tracking (About page)
+ * 5. Sticky Segmented Control TOC Active Tracking (About page)
  * -------------------------------------------------------------------------- */
 function initTableOfContents() {
   const tocLinks = document.querySelectorAll('.toc-segment-btn');

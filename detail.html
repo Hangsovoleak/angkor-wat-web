@@ -37,7 +37,7 @@
   <header class="site-header">
     <div class="nav-container">
       <a href="index.html" class="nav-logo-link" aria-label="ទំព័រដើម ប្រាសាទអង្គរវត្ត">
-        <img src="images/logo.png" alt="ឡូហ្គោប្រាសាទអង្គរវត្ត" class="nav-logo-img" width="120" height="28">
+        <img src="images/logo.png" alt="ឡូហ្គោប្រាសាទអង្គរវត្ត" class="nav-logo-img" width="120" height="28" loading="eager">
       </a>
 
       <!-- Desktop Links -->
@@ -88,7 +88,7 @@
     </section>
 
     <!-- 3 Eras Minimal Timeline -->
-    <section class="section section--grouped">
+    <section class="section section--grouped section-content-visibility">
       <div class="container timeline">
 
         <!-- Era 1 -->
@@ -101,21 +101,30 @@
             <div class="era-number" aria-hidden="true">១</div>
           </header>
 
-          <!-- 1 Large Image + 3 Small Row (Clickable Lightbox) -->
+          <!-- 1 Large Lead (16/10) + 3 Thumbnails Row (All in .img-card) -->
           <div class="era-gallery-block">
-            <div class="era-hero-image-wrap" data-lightbox>
-              <img src="images/a1.png" alt="គំនូរព្រាងប្រាសាទអង្គរវត្ត សម័យមហានគរ" width="920" height="518" loading="lazy" decoding="async">
-            </div>
+            <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-1">
+              <div class="img-card__frame">
+                <img src="images/a1.png" alt="គំនូរព្រាងប្រាសាទអង្គរវត្ត សម័យមហានគរ" width="525" height="296" loading="eager" fetchpriority="high" decoding="async">
+              </div>
+            </figure>
+
             <div class="era-thumb-row">
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/a2.png" alt="ក្បូរក្បាច់ និងចម្លាក់សម័យមហានគរ (រូបភាពទី ១)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/a3.png" alt="ក្បូរក្បាច់ និងចម្លាក់សម័យមហានគរ (រូបភាពទី ២)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/a4.png" alt="ក្បូរក្បាច់ និងចម្លាក់សម័យមហានគរ (រូបភាពទី ៣)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-1">
+                <div class="img-card__frame">
+                  <img src="images/a2.png" alt="ក្បូរក្បាច់ និងចម្លាក់សម័យមហានគរ (រូបភាពទី ១)" width="162" height="91" loading="lazy" decoding="async">
+                </div>
+              </figure>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-1">
+                <div class="img-card__frame">
+                  <img src="images/a3.png" alt="ក្បូរក្បាច់ និងចម្លាក់សម័យមហានគរ (រូបភាពទី ២)" width="163" height="92" loading="lazy" decoding="async">
+                </div>
+              </figure>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-1">
+                <div class="img-card__frame">
+                  <img src="images/a4.png" alt="ក្បូរក្បាច់ និងចម្លាក់សម័យមហានគរ (រូបភាពទី ៣)" width="164" height="92" loading="lazy" decoding="async">
+                </div>
+              </figure>
             </div>
           </div>
 
@@ -149,19 +158,28 @@
           </header>
 
           <div class="era-gallery-block">
-            <div class="era-hero-image-wrap" data-lightbox>
-              <img src="images/b1.png" alt="គំនូរប្រវត្តិសាស្ត្រអង្គរវត្ត សម័យកណ្តាល" width="920" height="518" loading="lazy" decoding="async">
-            </div>
+            <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-2">
+              <div class="img-card__frame">
+                <img src="images/b1.png" alt="គំនូរប្រវត្តិសាស្ត្រអង្គរវត្ត សម័យកណ្តាល" width="529" height="298" loading="lazy" decoding="async">
+              </div>
+            </figure>
+
             <div class="era-thumb-row">
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/b2.png" alt="ព័ត៌មានលម្អិត សម័យកណ្តាល (រូបភាពទី ១)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/b3.png" alt="ព័ត៌មានលម្អិត សម័យកណ្តាល (រូបភាពទី ២)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/b4.png" alt="ព័ត៌មានលម្អិត សម័យកណ្តាល (រូបភាពទី ៣)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-2">
+                <div class="img-card__frame">
+                  <img src="images/b2.png" alt="ព័ត៌មានលម្អិត សម័យកណ្តាល (រូបភាពទី ១)" width="168" height="94" loading="lazy" decoding="async">
+                </div>
+              </figure>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-2">
+                <div class="img-card__frame">
+                  <img src="images/b3.png" alt="ព័ត៌មានលម្អិត សម័យកណ្តាល (រូបភាពទី ២)" width="168" height="95" loading="lazy" decoding="async">
+                </div>
+              </figure>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-2">
+                <div class="img-card__frame">
+                  <img src="images/b4.png" alt="ព័ត៌មានលម្អិត សម័យកណ្តាល (រូបភាពទី ៣)" width="168" height="95" loading="lazy" decoding="async">
+                </div>
+              </figure>
             </div>
           </div>
 
@@ -192,19 +210,28 @@
           </header>
 
           <div class="era-gallery-block">
-            <div class="era-hero-image-wrap" data-lightbox>
-              <img src="images/c1.png" alt="ប្រាសាទអង្គរវត្ត សម័យបច្ចុប្បន្ន" width="920" height="518" loading="lazy" decoding="async">
-            </div>
+            <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-3">
+              <div class="img-card__frame">
+                <img src="images/c1.png" alt="ប្រាសាទអង្គរវត្ត សម័យបច្ចុប្បន្ន" width="525" height="295" loading="lazy" decoding="async">
+              </div>
+            </figure>
+
             <div class="era-thumb-row">
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/c2.png" alt="ព័ត៌មានលម្អិត សម័យបច្ចុប្បន្ន (រូបភាពទី ១)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/c3.png" alt="ព័ត៌មានលម្អិត សម័យបច្ចុប្បន្ន (រូបភាពទី ២)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
-              <div class="era-thumb-wrap" data-lightbox>
-                <img src="images/c4.png" alt="ព័ត៌មានលម្អិត សម័យបច្ចុប្បន្ន (រូបភាពទី ៣)" width="280" height="210" loading="lazy" decoding="async">
-              </div>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-3">
+                <div class="img-card__frame">
+                  <img src="images/c2.png" alt="ព័ត៌មានលម្អិត សម័យបច្ចុប្បន្ន (រូបភាពទី ១)" width="165" height="93" loading="lazy" decoding="async">
+                </div>
+              </figure>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-3">
+                <div class="img-card__frame">
+                  <img src="images/c3.png" alt="ព័ត៌មានលម្អិត សម័យបច្ចុប្បន្ន (រូបភាពទី ២)" width="166" height="94" loading="lazy" decoding="async">
+                </div>
+              </figure>
+              <figure class="img-card img-card--landscape img-card--interactive" data-lightbox data-lightbox-group="era-3">
+                <div class="img-card__frame">
+                  <img src="images/c4.png" alt="ព័ត៌មានលម្អិត សម័យបច្ចុប្បន្ន (រូបភាពទី ៣)" width="166" height="94" loading="lazy" decoding="async">
+                </div>
+              </figure>
             </div>
           </div>
 
@@ -236,10 +263,19 @@
       <button id="lightbox-close" class="ios-lightbox-close" aria-label="បិទផ្ទាំងរូបភាព">
         <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
+      <button id="lightbox-prev" class="ios-lightbox-nav-btn ios-lightbox-nav-prev" aria-label="រូបភាពមុន">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button id="lightbox-next" class="ios-lightbox-nav-btn ios-lightbox-nav-next" aria-label="រូបភាពបន្ទាប់">
+        <svg viewBox="0 0 24 24" fill="none"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
       <div class="ios-lightbox-img-wrap">
-        <img id="lightbox-img" class="ios-lightbox-img" src="" alt="">
+        <img id="lightbox-img" class="ios-lightbox-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" alt="">
       </div>
-      <p id="lightbox-caption" class="ios-lightbox-caption"></p>
+      <div class="ios-lightbox-meta">
+        <p id="lightbox-caption" class="ios-lightbox-caption"></p>
+        <span id="lightbox-counter" class="ios-lightbox-counter" aria-live="polite"></span>
+      </div>
     </div>
   </div>
 
