@@ -1,6 +1,6 @@
 /* ==========================================================================
-   COMPONENTS - APPLE / iOS DESIGN SYSTEM
-   Unified Image Card Component, Grouped Lists, Lightbox & 3D Viewer
+   COMPONENTS - APPLE / iOS RESPONSIVE DESIGN SYSTEM
+   Unified Image Card Component, 3D Model, Timeline, Chapters & Lightbox
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -22,10 +22,10 @@
   border: 1px solid var(--separator);
   box-shadow: var(--shadow-card);
   box-sizing: border-box;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.15s ease;
 }
 
-/* Subtle Inner Highlight Hairline (Apple-crisp edge overlay) */
+/* Subtle Inner Highlight Hairline (Apple crisp edge overlay) */
 .img-card__frame::after {
   content: "";
   position: absolute;
@@ -36,7 +36,7 @@
   z-index: 2;
 }
 
-/* Image Inside Card Frame (Fade-in on load & Smooth Hover) */
+/* Image Inside Card Frame (Fade-in on load & Smooth Transitions) */
 .img-card__frame img {
   width: 100%;
   height: 100%;
@@ -96,11 +96,12 @@
   object-position: center top;
 }
 
-/* Interactive Lightbox Cards (Desktop Hover only) */
+/* Interactive Cards & Touch vs Mouse */
 .img-card--interactive {
   cursor: zoom-in;
 }
 
+/* Desktop Hover Only: subtle zoom & deeper shadow */
 @media (hover: hover) and (pointer: fine) {
   .img-card--interactive:hover .img-card__frame {
     box-shadow: var(--shadow-elevated);
@@ -116,6 +117,11 @@
   .img-card--interactive:hover .img-card__frame img {
     transform: scale(1.03);
   }
+}
+
+/* Touch Active Feedback: subtle spring down */
+.img-card--interactive:active .img-card__frame {
+  transform: scale(0.98);
 }
 
 /* Error Fallback State */
@@ -153,16 +159,25 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Hero Banner Component
+   2. Hero Banner Component (Responsive & Safe-Area Aware)
    -------------------------------------------------------------------------- */
 .hero {
-  min-height: 72vh;
+  min-height: 60vh;
+  min-height: 60dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 12vh var(--space-24) 8vh;
+  padding: calc(var(--space-48) + var(--safe-top)) var(--space-16) var(--space-48);
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: 68vh;
+    min-height: 68dvh;
+    padding: calc(var(--space-64) + var(--safe-top)) var(--space-24) var(--space-64);
+  }
 }
 
 .hero-pill-badge {
@@ -179,16 +194,14 @@
 }
 
 .hero-pill-badge svg {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   stroke: currentColor;
 }
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
   font-weight: 700;
-  line-height: 1.35;
   color: var(--text);
   max-width: 900px;
   margin: 0 auto var(--space-24);
@@ -196,29 +209,31 @@
 
 .hero-subtitle {
   font-family: var(--font-sans);
-  font-size: clamp(1.1rem, 1.05rem + 0.4vw, 1.35rem);
   color: var(--text-secondary);
-  line-height: 1.85;
   max-width: 680px;
-  margin: 0 auto var(--space-48);
+  margin: 0 auto var(--space-40);
 }
 
 .hero-cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  min-height: 48px;
   padding: 12px 28px;
   border-radius: var(--radius-pill);
   background: var(--text);
   color: var(--bg);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   font-weight: 500;
   box-shadow: var(--shadow-sm);
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
-.hero-cta:hover {
-  opacity: 0.9;
+@media (hover: hover) and (pointer: fine) {
+  .hero-cta:hover {
+    opacity: 0.9;
+  }
 }
 
 .hero-cta:active {
@@ -226,18 +241,17 @@
 }
 
 .hero-cta svg {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   stroke: currentColor;
 }
 
 /* --------------------------------------------------------------------------
-   3. 3D Model Display Container
+   3. 3D Model Display Container (Aspect-Ratio & Pan-Y on Phones)
    -------------------------------------------------------------------------- */
 .model-wrapper {
   position: relative;
   width: 100%;
-  max-width: var(--content-max-width);
   margin: 0 auto;
   background: var(--bg-elevated);
   border-radius: var(--radius-xl);
@@ -248,20 +262,25 @@
 
 model-viewer {
   width: 100%;
-  height: 420px;
+  aspect-ratio: 4 / 3;
+  max-height: 80vh;
+  max-height: 80svh;
+  touch-action: pan-y;
   background-color: var(--bg-elevated);
   outline: none;
 }
 
 @media (min-width: 768px) {
   model-viewer {
-    height: 520px;
+    aspect-ratio: 16 / 9;
+    max-height: 560px;
+    touch-action: auto;
   }
 }
 
 @media (min-width: 1024px) {
   model-viewer {
-    height: 580px;
+    max-height: 600px;
   }
 }
 
@@ -292,15 +311,16 @@ model-viewer {
 }
 
 /* --------------------------------------------------------------------------
-   4. Tower Cards & Mobile Carousel
+   4. Tower Cards (Mobile Carousel with Peek & 3-Column Desktop Grid)
    -------------------------------------------------------------------------- */
 .towers-carousel-track {
   display: flex;
-  gap: var(--space-24);
+  gap: var(--space-20);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: var(--space-16);
+  padding: var(--space-8) var(--space-16) var(--space-24);
+  margin: 0 calc(-1 * var(--space-16));
   scrollbar-width: none;
 }
 
@@ -308,17 +328,8 @@ model-viewer {
   display: none;
 }
 
-@media (min-width: 900px) {
-  .towers-carousel-track {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    overflow: visible;
-    padding-bottom: 0;
-  }
-}
-
 .tower-card {
-  flex: 0 0 86%;
+  flex: 0 0 85%;
   scroll-snap-align: center;
   background: var(--bg-elevated);
   border-radius: var(--radius-lg);
@@ -330,25 +341,34 @@ model-viewer {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media (min-width: 600px) and (max-width: 899px) {
+@media (min-width: 600px) and (max-width: 1023px) {
   .tower-card {
-    flex: 0 0 65%;
+    flex: 0 0 60%;
   }
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
+  .towers-carousel-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-24);
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+  }
+
   .tower-card {
     flex: unset;
   }
-}
 
-.tower-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-elevated);
+  .tower-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
 }
 
 .tower-card .img-card {
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-20);
 }
 
 .tower-header {
@@ -412,12 +432,21 @@ model-viewer {
 }
 
 /* --------------------------------------------------------------------------
-   6. Moat Full-Bleed Section
+   6. Moat Section (Single Column Mobile, Split Side-by-Side from 900px)
    -------------------------------------------------------------------------- */
 .moat-section-wrap {
   display: flex;
   flex-direction: column;
-  gap: var(--space-48);
+  gap: var(--space-32);
+}
+
+@media (min-width: 900px) {
+  .moat-section-wrap {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: var(--space-48);
+  }
 }
 
 .moat-text-content {
@@ -425,23 +454,30 @@ model-viewer {
   margin: 0 auto;
 }
 
+@media (min-width: 900px) {
+  .moat-text-content {
+    max-width: unset;
+    margin: 0;
+  }
+}
+
 .moat-text-content p {
   color: var(--text);
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-20);
 }
 
 /* --------------------------------------------------------------------------
-   7. Detail Page: iOS Minimal Timeline
+   7. Detail Page: Responsive Timeline & 4-Column Era Gallery Grid
    -------------------------------------------------------------------------- */
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: var(--space-64);
+  gap: var(--space-48);
 }
 
 @media (min-width: 768px) {
   .timeline {
-    gap: var(--space-96);
+    gap: var(--space-80);
   }
 }
 
@@ -450,58 +486,104 @@ model-viewer {
   border-radius: var(--radius-xl);
   border: 1px solid var(--separator);
   box-shadow: var(--shadow-card);
-  padding: var(--space-32) var(--space-24);
+  padding: var(--space-24) var(--space-20);
   position: relative;
+  /* Thin vertical accent line on phone left edge */
+  border-left: 3px solid var(--accent);
 }
 
 @media (min-width: 768px) {
   .era-article {
     padding: var(--space-48);
+    border-left: 1px solid var(--separator);
   }
 }
 
 .era-header {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: var(--space-8);
   border-bottom: 1px solid var(--separator);
-  padding-bottom: var(--space-24);
-  margin-bottom: var(--space-32);
+  padding-bottom: var(--space-20);
+  margin-bottom: var(--space-24);
+}
+
+@media (min-width: 768px) {
+  .era-header {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    padding-bottom: var(--space-24);
+    margin-bottom: var(--space-32);
+  }
+}
+
+.era-number {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  .era-number {
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 300;
+    color: var(--text-tertiary);
+  }
 }
 
 .era-title-group h2 {
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
   margin-bottom: 4px;
 }
 
 .era-subtitle {
   font-family: var(--font-sans);
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
   color: var(--accent);
   font-weight: 500;
 }
 
-.era-number {
-  font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  font-weight: 300;
-  color: var(--text-tertiary);
-  line-height: 1;
-  user-select: none;
-}
-
-/* Era Gallery: 1 Lead (16/10) + 3 Thumbnails Row */
-.era-gallery-block {
-  margin-bottom: var(--space-32);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-16);
-}
-
-.era-thumb-row {
+/* 4-Column Responsive Gallery Grid (Desktop 2x2 lead + 3 thumbs) */
+.era-gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-16);
+  margin-bottom: var(--space-32);
+}
+
+.era-gallery-lead {
+  grid-column: 1 / -1; /* Full width on phones & tablets */
+}
+
+@media (min-width: 1024px) {
+  .era-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto;
+    align-items: stretch;
+  }
+
+  .era-gallery-lead {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+  }
+
+  .era-thumb-1 {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .era-thumb-2 {
+    grid-column: 4;
+    grid-row: 1;
+  }
+
+  .era-thumb-3 {
+    grid-column: 3 / 5;
+    grid-row: 2;
+  }
 }
 
 .era-prose {
@@ -518,34 +600,98 @@ model-viewer {
 }
 
 /* --------------------------------------------------------------------------
-   8. About Page: King Showcase, Sticky TOC & 5 Chapters
+   8. About Page: King Showcase, Responsive Sticky TOC & 5 Chapters
    -------------------------------------------------------------------------- */
 .king-showcase-visual {
   width: 100%;
-  margin-bottom: var(--space-48);
+  margin-bottom: var(--space-32);
 }
 
-/* Sticky Segmented Control TOC on Desktop */
+@media (min-width: 768px) {
+  .king-showcase-visual {
+    margin-bottom: var(--space-48);
+  }
+}
+
+/* Responsive Sticky TOC: Compact Scroll Strip on Phone, Pill on Desktop */
 .toc-track-wrap {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-8) var(--space-16);
+  margin-bottom: var(--space-32);
+  position: sticky;
+  top: var(--nav-height);
+  z-index: 990;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--separator);
+  scrollbar-width: none;
+}
+
+.toc-track-wrap::-webkit-scrollbar {
   display: none;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .toc-track-wrap {
+    background: var(--nav-bg-solid);
+  }
+}
+
+.toc-track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  list-style: none;
+  white-space: nowrap;
+}
+
+.toc-segment-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-grouped);
+  border: 1px solid var(--separator);
+  transition: all 0.2s ease;
+  scroll-snap-align: start;
+}
+
+.toc-segment-btn:hover {
+  color: var(--text);
+}
+
+.toc-segment-btn.active {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--accent);
+  font-weight: 600;
 }
 
 @media (min-width: 900px) {
   .toc-track-wrap {
-    display: flex;
+    overflow: visible;
     justify-content: center;
-    position: sticky;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
     top: calc(var(--nav-height) + var(--space-16));
-    z-index: 990;
+    padding: 0;
     margin-bottom: var(--space-48);
     pointer-events: none;
   }
 
   .toc-track {
     pointer-events: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
     padding: 4px;
     background: var(--nav-bg);
     backdrop-filter: blur(20px) saturate(180%);
@@ -553,40 +699,28 @@ model-viewer {
     border: 1px solid var(--separator);
     border-radius: var(--radius-pill);
     box-shadow: var(--shadow-card);
-    list-style: none;
   }
 
   .toc-segment-btn {
-    display: inline-flex;
-    align-items: center;
+    border: none;
+    background: transparent;
     padding: 6px 16px;
-    border-radius: var(--radius-pill);
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-  }
-
-  .toc-segment-btn:hover {
-    color: var(--text);
   }
 
   .toc-segment-btn.active {
     background: var(--bg-elevated);
     color: var(--text);
     box-shadow: var(--shadow-sm);
-    font-weight: 600;
   }
 }
 
-/* 5 Chapter Sections (Alternating Two-Column on Desktop) */
+/* 5 Chapter Sections (Stacked Mobile, Alternating 2-Column Desktop from 900px) */
 .chapter-row {
   display: flex;
   flex-direction: column;
-  gap: var(--space-32);
-  margin-bottom: var(--space-64);
-  scroll-margin-top: calc(var(--nav-height) + var(--space-64));
+  gap: var(--space-24);
+  margin-bottom: var(--space-48);
+  scroll-margin-top: calc(var(--nav-height) + var(--space-32));
 }
 
 @media (min-width: 900px) {
@@ -628,11 +762,11 @@ model-viewer {
 
 .chapter-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
   margin-bottom: var(--space-16);
 }
 
-/* Map Grid */
+/* Maps Grid (Stacked Mobile, 3 Columns Desktop from 900px) */
 .map-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -640,46 +774,59 @@ model-viewer {
   margin-top: var(--space-32);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 900px) {
   .map-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 /* --------------------------------------------------------------------------
-   9. iOS Photos-Style Lightbox Modal (Multi-image, Arrow Nav & Swipe)
+   9. iOS Photos-Style Lightbox Modal (Pinch-Zoom Friendly & Responsive)
    -------------------------------------------------------------------------- */
 .ios-lightbox {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-16);
+  padding: calc(var(--safe-top) + var(--space-16)) calc(var(--safe-right) + var(--space-16)) calc(var(--safe-bottom) + var(--space-16)) calc(var(--safe-left) + var(--space-16));
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.25s ease;
+  touch-action: pinch-zoom;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .ios-lightbox {
+    background: rgba(0, 0, 0, 0.95);
+  }
 }
 
 .ios-lightbox.active {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 
 .ios-lightbox-dialog {
   position: relative;
-  max-width: 92vw;
-  max-height: 88vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  max-height: 100dvh;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   transform: scale(0.96);
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  touch-action: pinch-zoom;
 }
 
 .ios-lightbox.active .ios-lightbox-dialog {
@@ -688,20 +835,25 @@ model-viewer {
 
 .ios-lightbox-img-wrap {
   width: 100%;
-  max-height: 80vh;
+  max-height: calc(100vh - 130px);
+  max-height: calc(100dvh - 130px);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: var(--radius-md);
+  touch-action: pinch-zoom;
 }
 
 .ios-lightbox-img {
   max-width: 92vw;
-  max-height: 80vh;
+  max-height: calc(100vh - 150px);
+  max-height: calc(100dvh - 150px);
   object-fit: contain;
   display: block;
   user-select: none;
+  -webkit-user-drag: none;
+  touch-action: pinch-zoom;
 }
 
 .ios-lightbox-meta {
@@ -712,6 +864,7 @@ model-viewer {
   margin-top: var(--space-16);
   color: #FFFFFF;
   text-align: center;
+  padding: 0 var(--space-16);
 }
 
 .ios-lightbox-counter {
@@ -730,15 +883,15 @@ model-viewer {
   max-width: 60ch;
 }
 
-/* Lightbox Controls */
+/* Lightbox Controls Inside Safe Areas */
 .ios-lightbox-close {
   position: absolute;
-  top: -48px;
-  right: 0;
+  top: calc(var(--safe-top) + 12px);
+  right: calc(var(--safe-right) + 12px);
   width: 44px;
   height: 44px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   color: #FFFFFF;
   cursor: pointer;
@@ -750,7 +903,11 @@ model-viewer {
 }
 
 .ios-lightbox-close:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.ios-lightbox-close:active {
+  transform: scale(0.95);
 }
 
 .ios-lightbox-nav-btn {
@@ -760,7 +917,7 @@ model-viewer {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   color: #FFFFFF;
   cursor: pointer;
@@ -772,7 +929,7 @@ model-viewer {
 }
 
 .ios-lightbox-nav-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .ios-lightbox-nav-btn:active {
@@ -780,24 +937,24 @@ model-viewer {
 }
 
 .ios-lightbox-nav-prev {
-  left: 12px;
+  left: calc(var(--safe-left) + 12px);
 }
 
 .ios-lightbox-nav-next {
-  right: 12px;
+  right: calc(var(--safe-right) + 12px);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
   .ios-lightbox-nav-prev {
-    left: -60px;
+    left: 24px;
   }
   .ios-lightbox-nav-next {
-    right: -60px;
+    right: 24px;
   }
 }
 
 /* --------------------------------------------------------------------------
-   10. Performance & Physical Motion
+   10. Motion & Reduced Motion Preferences
    -------------------------------------------------------------------------- */
 .fade-rise {
   opacity: 0;

@@ -1,10 +1,10 @@
 /* ==========================================================================
    LAYOUT - TRANSLUCENT NAVBAR, SECTIONS, CONTAINERS & FOOTER
-   Apple / iOS Product Page Architecture
+   Apple / iOS Responsive Architecture
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Translucent Sticky Apple Navbar
+   1. Translucent Sticky Apple Navbar with Safe Area Support
    -------------------------------------------------------------------------- */
 .site-header {
   position: sticky;
@@ -15,25 +15,46 @@
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--separator);
+  padding-top: var(--safe-top);
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+@supports not (backdrop-filter: blur(1px)) {
+  .site-header {
+    background: var(--nav-bg-solid);
+  }
+}
+
 .nav-container {
-  max-width: var(--content-max-width);
+  width: min(100% - 32px, var(--wide-max-width));
   height: 100%;
   margin: 0 auto;
-  padding: 0 var(--space-24);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-16);
+}
+
+@media (min-width: 768px) {
+  .nav-container {
+    width: min(100% - 48px, var(--wide-max-width));
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-container {
+    width: min(100% - 64px, var(--wide-max-width));
+  }
 }
 
 /* Nav Logo */
 .nav-logo-link {
   display: inline-flex;
   align-items: center;
-  opacity: 0.9;
+  min-height: 44px;
+  opacity: 0.95;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
 .nav-logo-link:hover {
@@ -46,7 +67,7 @@
   display: block;
 }
 
-/* Desktop Navigation Links */
+/* Desktop Navigation Links (>= 768px) */
 .nav-menu {
   display: none;
   align-items: center;
@@ -62,10 +83,13 @@
 
 .nav-link {
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-secondary);
-  padding: 4px 0;
+  padding: 8px 0;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   position: relative;
   transition: color 0.15s ease;
 }
@@ -79,20 +103,20 @@
   font-weight: 600;
 }
 
-/* Mobile Hamburger Toggle */
+/* Mobile Hamburger Toggle (< 768px) */
 .nav-toggle-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  min-width: 44px;
+  min-height: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
   color: var(--text);
   border-radius: var(--radius-sm);
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, transform 0.15s ease;
 }
 
 @media (min-width: 768px) {
@@ -101,15 +125,15 @@
   }
 }
 
-.nav-toggle-btn:hover {
-  opacity: 0.7;
+.nav-toggle-btn:active {
+  transform: scale(0.95);
 }
 
 .nav-toggle-icon {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   stroke: currentColor;
-  stroke-width: 1.5;
+  stroke-width: 1.8;
   stroke-linecap: round;
 }
 
@@ -120,21 +144,26 @@
   left: 0;
   right: 0;
   bottom: 0;
+  height: calc(100vh - var(--nav-height));
+  height: calc(100dvh - var(--nav-height));
   background: var(--bg);
   z-index: 9998;
   display: flex;
   flex-direction: column;
-  padding: var(--space-32) var(--space-24);
+  padding: var(--space-32) var(--space-24) calc(var(--space-48) + var(--safe-bottom));
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transform: translateY(-8px);
   transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0.25s ease;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-nav-sheet.open {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
@@ -152,42 +181,29 @@
 }
 
 .mobile-nav-link {
-  display: block;
+  display: flex;
+  align-items: center;
   font-family: var(--font-sans);
   font-size: 1.75rem;
   font-weight: 600;
   color: var(--text);
-  padding: var(--space-24) 0;
+  padding: var(--space-20) 0;
+  min-height: 48px;
   transition: color 0.15s ease;
 }
 
-.mobile-nav-link:hover {
-  color: var(--accent);
-}
-
+.mobile-nav-link:hover,
 .mobile-nav-link.active {
   color: var(--accent);
 }
 
 /* --------------------------------------------------------------------------
-   2. Alternating Full-Width Sections (Apple Product Page Rhythm)
+   2. Alternating Full-Width Sections (Apple Rhythm)
    -------------------------------------------------------------------------- */
 .section {
   width: 100%;
-  padding: var(--space-64) 0;
+  padding: var(--section-padding) 0;
   position: relative;
-}
-
-@media (min-width: 768px) {
-  .section {
-    padding: var(--space-96) 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .section {
-    padding: var(--space-128) 0;
-  }
 }
 
 .section--base {
@@ -213,7 +229,7 @@
 
 .section-eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1.05rem);
   font-weight: 600;
   color: var(--accent);
   text-transform: none;
@@ -227,44 +243,71 @@
 }
 
 .section-subtitle {
-  font-size: clamp(1.1rem, 1.05rem + 0.3vw, 1.25rem);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   color: var(--text-secondary);
-  line-height: 1.8;
+  line-height: 1.85;
   margin: 0 auto;
 }
 
 /* --------------------------------------------------------------------------
-   3. Container Max Widths
+   3. Unified Fluid Containers (No Fixed Pixel Widths)
    -------------------------------------------------------------------------- */
 .container {
-  width: 100%;
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  padding: 0 var(--space-24);
+  width: min(100% - 32px, var(--content-max-width));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: min(100% - 48px, var(--content-max-width));
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: min(100% - 64px, var(--content-max-width));
+  }
 }
 
 .container-wide {
-  width: 100%;
-  max-width: var(--wide-max-width);
-  margin: 0 auto;
-  padding: 0 var(--space-24);
+  width: min(100% - 32px, var(--wide-max-width));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container-wide {
+    width: min(100% - 48px, var(--wide-max-width));
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-wide {
+    width: min(100% - 64px, var(--wide-max-width));
+  }
 }
 
 .container-narrow {
-  width: 100%;
-  max-width: 680px;
-  margin: 0 auto;
-  padding: 0 var(--space-24);
+  width: min(100% - 32px, 680px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container-narrow {
+    width: min(100% - 48px, 680px);
+  }
 }
 
 /* --------------------------------------------------------------------------
-   4. Apple-style Minimal Footer
+   4. Apple-Style Responsive Footer with Safe Area Support
    -------------------------------------------------------------------------- */
 .site-footer {
   background-color: var(--bg-grouped);
   border-top: 1px solid var(--separator);
-  padding: var(--space-32) 0 var(--space-48);
-  font-size: 0.88rem;
+  padding: var(--space-32) 0 calc(var(--space-48) + var(--safe-bottom));
+  font-size: 0.9rem;
   color: var(--text-secondary);
 }
 
@@ -287,7 +330,7 @@
 .footer-author {
   font-family: var(--font-sans);
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .footer-motto {
@@ -295,4 +338,33 @@
   font-weight: 600;
   color: var(--accent);
   letter-spacing: normal;
+}
+
+/* --------------------------------------------------------------------------
+   5. Landscape Phone Mode Optimizations (< 500px height)
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  :root {
+    --nav-bar-height: 44px;
+    --section-padding: 36px;
+  }
+
+  .site-header {
+    height: var(--nav-height);
+  }
+
+  .mobile-nav-sheet {
+    padding-top: var(--space-16);
+  }
+
+  .mobile-nav-link {
+    font-size: 1.3rem;
+    padding: var(--space-12) 0;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
 }

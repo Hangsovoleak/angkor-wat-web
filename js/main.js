@@ -1,5 +1,5 @@
 /**
- * Angkor Wat - Apple / iOS Interaction Design
+ * Angkor Wat - Apple / iOS Responsive Interaction Design
  * Vanilla JavaScript (No Frameworks, No Dependencies)
  */
 
@@ -25,7 +25,7 @@ function initMobileNav() {
     mobileSheet.classList.toggle('open', isOpen);
     menuBtn.setAttribute('aria-expanded', String(isOpen));
     
-    // Lock body scroll when mobile sheet is open
+    // Lock body scroll cleanly without layout jump
     document.body.style.overflow = isOpen ? 'hidden' : '';
 
     // Switch icon between hamburger and close (X)
@@ -33,8 +33,10 @@ function initMobileNav() {
     if (icon) {
       if (isOpen) {
         icon.innerHTML = '<path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>';
+        menuBtn.setAttribute('aria-label', 'បិទម៉ឺនុយ');
       } else {
         icon.innerHTML = '<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>';
+        menuBtn.setAttribute('aria-label', 'បើកម៉ឺនុយ');
       }
     }
   }
@@ -49,6 +51,13 @@ function initMobileNav() {
     link.addEventListener('click', () => {
       toggleMenu(false);
     });
+  });
+
+  // Close when tapping outside the sheet
+  document.addEventListener('click', (e) => {
+    if (mobileSheet.classList.contains('open') && !mobileSheet.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+      toggleMenu(false);
+    }
   });
 
   // Close on Escape key
@@ -101,7 +110,7 @@ function initScrollAnimations() {
       }
     });
   }, {
-    threshold: 0.1,
+    threshold: 0.08,
     rootMargin: '0px 0px -40px 0px'
   });
 
@@ -153,7 +162,7 @@ function initImageLoading() {
 }
 
 /* --------------------------------------------------------------------------
- * 4. iOS Photos-Style Lightbox Modal (Multi-image, Arrow Nav & Swipe)
+ * 4. iOS Photos-Style Lightbox Modal (Multi-image, Pinch-Zoom & Swipe)
  * -------------------------------------------------------------------------- */
 function initLightbox() {
   const lightbox = document.getElementById('lightbox-modal');
@@ -168,35 +177,12 @@ function initLightbox() {
   let lastActiveElement = null;
   let touchStartX = 0;
   let touchStartY = 0;
+  let isMultiTouch = false;
 
-  // Create Prev / Next Buttons if not already present
-  let prevBtn = lightbox.querySelector('.ios-lightbox-nav-prev');
-  let nextBtn = lightbox.querySelector('.ios-lightbox-nav-next');
-  let counterEl = lightbox.querySelector('.ios-lightbox-counter');
-
-  const dialog = lightbox.querySelector('.ios-lightbox-dialog');
-  if (dialog) {
-    if (!prevBtn) {
-      prevBtn = document.createElement('button');
-      prevBtn.className = 'ios-lightbox-nav-btn ios-lightbox-nav-prev';
-      prevBtn.setAttribute('aria-label', 'រូបភាពមុន');
-      prevBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="15 18 9 12 15 6"/></svg>';
-      dialog.appendChild(prevBtn);
-    }
-    if (!nextBtn) {
-      nextBtn = document.createElement('button');
-      nextBtn.className = 'ios-lightbox-nav-btn ios-lightbox-nav-next';
-      nextBtn.setAttribute('aria-label', 'រូបភាពបន្ទាប់');
-      nextBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="9 18 15 12 9 6"/></svg>';
-      dialog.appendChild(nextBtn);
-    }
-    const metaWrap = lightbox.querySelector('.ios-lightbox-meta');
-    if (metaWrap && !counterEl) {
-      counterEl = document.createElement('span');
-      counterEl.className = 'ios-lightbox-counter';
-      metaWrap.insertBefore(counterEl, metaWrap.firstChild);
-    }
-  }
+  // Retrieve Prev / Next Buttons & Counter
+  const prevBtn = lightbox.querySelector('.ios-lightbox-nav-prev');
+  const nextBtn = lightbox.querySelector('.ios-lightbox-nav-next');
+  const counterEl = lightbox.querySelector('.ios-lightbox-counter');
 
   function updateImage() {
     if (currentIndex < 0 || currentIndex >= currentGroup.length) return;
@@ -246,7 +232,7 @@ function initLightbox() {
   function closeLightbox() {
     lightbox.classList.remove('active');
     lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
+    lightboxImg.src = 'data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\'/%3E';
     document.body.style.overflow = '';
     if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
       lastActiveElement.focus();
@@ -309,13 +295,20 @@ function initLightbox() {
     }
   });
 
-  // Touch Swipe (Left/Right to navigate, Down to dismiss)
+  // Touch Swipe (Left/Right to navigate, Down to dismiss, Pinch-to-zoom allowed)
   lightbox.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 1) {
+      isMultiTouch = true;
+      return;
+    }
+    isMultiTouch = false;
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
   }, { passive: true });
 
   lightbox.addEventListener('touchend', (e) => {
+    if (isMultiTouch || !e.changedTouches.length) return;
+
     const deltaX = e.changedTouches[0].clientX - touchStartX;
     const deltaY = e.changedTouches[0].clientY - touchStartY;
 
@@ -363,10 +356,12 @@ function initTableOfContents() {
     }
 
     tocLinks.forEach(link => {
-      if (link.getAttribute('href') === currentId) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
+      const isActive = link.getAttribute('href') === currentId;
+      link.classList.toggle('active', isActive);
+      
+      // On mobile horizontal strip, auto-scroll active button into view
+      if (isActive && window.innerWidth < 900) {
+        link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
     });
   }
